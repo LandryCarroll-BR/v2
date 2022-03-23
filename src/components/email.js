@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import Side from "./side";
+import React from "react"
+import styled from "styled-components"
+import Side from "./side"
 
 const StyledLinkWrapper = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const StyledLinkWrapper = styled.div`
       color: var(--cyan);
     }
   }
-`;
+`
 
 const Email = () => (
   <Side orientation="right">
@@ -42,6 +42,6 @@ const Email = () => (
       <a href={`mailto:hello@landrycarroll.com`}>hello@landrycarroll.com</a>
     </StyledLinkWrapper>
   </Side>
-);
+)
 
-export default Email;
+export default Email

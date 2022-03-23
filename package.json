@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "v2",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
+  "description": "Version 2 of Landry Carroll portfolio",
+  "version": "1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
@@ -31,6 +31,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
+    "react-reveal": "^1.2.2",
     "styled-components": "^5.3.3",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"

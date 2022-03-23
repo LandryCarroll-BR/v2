@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
 const variables = css`
   :root {
@@ -7,7 +7,8 @@ const variables = css`
     --blue-shadow: #030c19;
     --cyan: #3ee5df;
     --cyan-tint: rgba(0, 201, 194, 0.08);
-    --bright-purple: #b73bfa;
+    --purple: #DDA3FF;
+    --purple-tint: rgba(221, 163, 255, 0.08);
     --white: #f0ebf2;
     --slate: #bdbabf;
     --gradient: linear-gradient(
@@ -15,8 +16,13 @@ const variables = css`
       rgba(183, 59, 250, 1) 0%,
       rgba(0, 201, 194, 1) 100%
     );
+    --gradient-alt: linear-gradient(
+      45deg,
+      rgba(0, 201, 194, 1) 0%,
+      rgba(183, 59, 250, 1) 100%
+    );
 
-    --border-radius: .25em;
+    --border-radius: 0.25em;
     --transition: 200ms;
 
     --fz-xxs: 12px;
@@ -30,6 +36,6 @@ const variables = css`
     --font-sans: "Inter", "San Francisco", "SF Pro Text", -apple-system,
       system-ui, sans-serif;
   }
-`;
+`
 
-export default variables;
+export default variables

@@ -1,12 +1,15 @@
-import React from "react";
-import { StaticImage } from "gatsby-plugin-image";
-import styled from "styled-components";
-import Icon from "../icons/icon";
-import { Link } from "gatsby";
+import React, { useContext } from "react"
+import { StaticImage } from "gatsby-plugin-image"
+import styled from "styled-components"
+import Icon from "../icons/icon"
+import { Link } from "gatsby"
+import {
+  GlobalStateContext
+} from '../../context/GlobalContextProvider';
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
-  min-height: 100vh;
+  height: 100vh;
   flex-direction: column;
   grid-gap: 12px;
 
@@ -18,14 +21,25 @@ const StyledHeroSection = styled.section`
     justify-content: space-between;
     flex-direction: row;
   }
-`;
+`
 const StyledPic = styled.div`
   ${({ theme }) => theme.mixins.overlay};
   max-width: 140px;
   border-radius: 100vh !important;
-  
+  cursor: initial;
+
+  /* .wrapper::after {
+    background: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+  } */
+
   * {
     border-radius: 100vh !important;
+  }
+
+  .img {
+    border-width: 2px;
   }
 
   @media (min-width: 734px) {
@@ -36,17 +50,20 @@ const StyledPic = styled.div`
     max-width: 300px;
     width: 100%;
   }
-`;
+`
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
 
   h1 {
     margin: 22px 0 0px 0px;
-    color: var(--cyan);
+    color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
     font-size: clamp(var(--fz-md), 5vw, var(--fz-xl));
     font-weight: 400;
     text-align: center;
+    transition: var(--transition);
 
     @media (min-width: 1200px) {
       margin: 0 0 0px 4px;
@@ -65,6 +82,13 @@ const StyledContent = styled.div`
       margin: 20px 0 0 0;
       text-align: left;
     }
+  }
+
+  .heading-period {
+    color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    transition: var(--transition)
   }
 
   p {
@@ -92,26 +116,51 @@ const StyledContent = styled.div`
 
   .portfolio {
     ${({ theme }) => theme.mixins.bigButton};
-    text-align: center;
+    color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    border-color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    &:hover {
+      background-color: ${
+        props => props.colorTheme === 'designer' ?
+        'var(--purple-tint)' : 'var(--cyan-tint)'
+      };
+    }
   }
 
   .gitHub {
     ${({ theme }) => theme.mixins.bigButton};
     padding: 1.125rem 1.75rem !important;
-    text-align: center;
+    color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    border-color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    &:hover {
+      background-color: ${
+        props => props.colorTheme === 'designer' ?
+        'var(--purple-tint)' : 'var(--cyan-tint)'
+      };
+    }
 
     & svg {
+      color: inherit;
       height: 18px;
       width: auto;
       margin-right: 4px;
     }
   }
-`;
+`
 
 const Hero = () => {
+  const state = useContext(GlobalStateContext);
+
   return (
     <StyledHeroSection>
-      <StyledPic>
+      <StyledPic colorTheme={state.theme}>
         <div className="wrapper">
           <StaticImage
             className="img"
@@ -123,10 +172,10 @@ const Hero = () => {
           />
         </div>
       </StyledPic>
-      <StyledContent>
+      <StyledContent colorTheme={state.theme}>
         <h1>Hi, my name is</h1>
         <h3 className="big-heading">
-          Landry Carroll<span style={{ color: "var(--cyan)" }}>.</span>
+          Landry Carroll<span className="heading-period">.</span>
         </h3>
         <p>
           I’m a designer-gone-developer who started coding back in 2020. I have
@@ -144,7 +193,7 @@ const Hero = () => {
         </div>
       </StyledContent>
     </StyledHeroSection>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

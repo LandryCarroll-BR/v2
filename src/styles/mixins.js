@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css } from "styled-components"
 
 const button = css`
   color: var(--cyan);
@@ -22,7 +22,7 @@ const button = css`
   &:after {
     display: none !important;
   }
-`;
+`
 
 const mixins = {
   flexCenter: css`
@@ -82,10 +82,15 @@ const mixins = {
       overflow: hidden;
       border-radius: var(--border-radius);
       cursor: pointer;
+      transition: 200ms;
+    }
+
+    .wrapper:hover{
+      filter: brightness(1.3);
     }
 
     .wrapper::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: 0;
@@ -94,24 +99,17 @@ const mixins = {
       height: 100%;
       background: var(--gradient);
       mix-blend-mode: multiply;
-    }
-
-    .wrapper:hover.wrapper::after {
-      opacity: 0;
+      overflow: hidden;
+      transition: var(--transition)
     }
 
     .img {
       position: relative;
       filter: grayscale(100%);
       z-index: 1;
-      border: 2px solid #fff;
+      border: 1px solid #fff;
       border-radius: var(--border-radius);
       transition: 200ms;
-    }
-
-    .wrapper:hover .img {
-      filter: none;
-      transform: scale(1.025);
     }
   `,
 
@@ -166,6 +164,6 @@ const mixins = {
     padding: 0;
     margin: 0;
   `,
-};
+}
 
-export default mixins;
+export default mixins

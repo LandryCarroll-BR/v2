@@ -1,6 +1,6 @@
-import React from "react";
-import Side from "./side";
-import styled from "styled-components";
+import React from "react"
+import Side from "./side"
+import styled from "styled-components"
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const StyledWrapper = styled.div`
     transform: rotate(180deg);
     color: var(--slate);
   }
-`;
+`
 
 const Copyright = () => {
   return (
@@ -37,7 +37,7 @@ const Copyright = () => {
         <span>© 2022 Landry Carroll</span>
       </StyledWrapper>
     </Side>
-  );
-};
+  )
+}
 
-export default Copyright;
+export default Copyright

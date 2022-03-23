@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import styled from 'styled-components';
-import Icon from "../icons/icon";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import styled from "styled-components"
+import Icon from "../icons/icon"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Fade from "react-reveal/Fade"
+import {
+  GlobalStateContext
+} from '../../context/GlobalContextProvider';
 
 const StyledProjects = styled.section`
   h2 {
@@ -12,19 +16,22 @@ const StyledProjects = styled.section`
   }
 
   h2::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 50%;
     right: -180%;
     width: 150%;
     height: 1px;
-    background-color: var(--slate);
+    background-color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
+    transition: var(--transition);
   }
 
   ul {
     ${({ theme }) => theme.mixins.resetList}
   }
-`;
+`
 const StyledProjectCard = styled.li`
   position: relative;
   display: grid;
@@ -34,7 +41,7 @@ const StyledProjectCard = styled.li`
   width: 100%;
   margin: 0 auto 120px auto;
 
-  @media (max-width:600px) {
+  @media (max-width: 600px) {
     display: flex;
     flex-direction: column-reverse;
   }
@@ -45,36 +52,36 @@ const StyledProjectCard = styled.li`
       text-align: right;
 
       @media (max-width: 940px) {
-        grid-column: 6 / 13
+        grid-column: 6 / 13;
       }
       @media (max-width: 830px) {
-       grid-column: 5 / 13
+        grid-column: 5 / 13;
       }
-      @media (max-width:600px) {
+      @media (max-width: 600px) {
         text-align: left;
       }
     }
 
     .project-tech {
       justify-content: flex-end;
-      
+
       & li:last-of-type {
         margin: 0;
       }
 
-      @media (max-width:600px) {
+      @media (max-width: 600px) {
         justify-content: flex-start;
       }
     }
 
     .project-links {
       justify-content: flex-end;
-      
+
       *:last-child {
         margin: 0;
       }
 
-      @media (max-width:600px) {
+      @media (max-width: 600px) {
         justify-content: flex-start;
       }
     }
@@ -83,11 +90,11 @@ const StyledProjectCard = styled.li`
       grid-column: 1 / 8;
 
       @media (max-width: 940px) {
-        grid-column: 1 / 9
+        grid-column: 1 / 9;
       }
       @media (max-width: 830px) {
-      grid-column: 1 / 10
-    }
+        grid-column: 1 / 10;
+      }
     }
   }
 
@@ -98,20 +105,23 @@ const StyledProjectCard = styled.li`
     grid-row: 1 / -1;
 
     @media (max-width: 940px) {
-      grid-column: 1 / 8
+      grid-column: 1 / 8;
     }
     @media (max-width: 830px) {
-      grid-column: 1 / 9
+      grid-column: 1 / 9;
     }
   }
 
   .project-subtitle {
-    color: var(--cyan);
+    color: ${
+      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+    };
     font-size: var(--fz-sm);
+    transition: var(--transition);
   }
 
   .project-title {
-    margin-top: .7em;
+    margin-top: 0.7em;
   }
 
   .project-description {
@@ -140,33 +150,41 @@ const StyledProjectCard = styled.li`
 
     * {
       width: 24px;
-      margin:0 14px 0 0;
+      margin: 0 14px 0 0;
       color: var(--slate);
     }
   }
 
   .project-img {
     ${({ theme }) => theme.mixins.overlay};
+    /* .wrapper::after {
+      background: ${
+        props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
+      };
+    } */
     position: relative;
     height: 100%;
     grid-column: 6 / 13;
     grid-row: -1 / 1;
 
     @media (max-width: 940px) {
-      grid-column: 5 / 13
+      grid-column: 5 / 13;
     }
 
     @media (max-width: 830px) {
-      grid-column: 4 / 13
+      grid-column: 4 / 13;
     }
   }
-`;
+`
 
 const Projects = () => {
+  const state = useContext(GlobalStateContext);
+
   const data = useStaticQuery(graphql`
     {
       featured: allMarkdownRemark(
-        filter: {fileAbsolutePath: {regex: "/featured/"}}) {
+        filter: { fileAbsolutePath: { regex: "/designer/" } }
+      ) {
         edges {
           node {
             frontmatter {
@@ -175,7 +193,11 @@ const Projects = () => {
               tech
               cover {
                 childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  gatsbyImageData(
+                    width: 700
+                    placeholder: BLURRED
+                    formats: [AUTO, WEBP, AVIF]
+                  )
                 }
               }
               github
@@ -186,50 +208,56 @@ const Projects = () => {
       }
     }
   `)
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
+
+  const featuredProjects = data.featured.edges.filter(({ node }) => node)
 
   return (
-    <StyledProjects>
-      <h2>Projects</h2>
+    <StyledProjects colorTheme={state.theme}>
+      <Fade
+        bottom
+        duration={800}
+        distance="50px">
+        <h2>Projects</h2>
+      </Fade>
       <ul className="projects">
-        {featuredProjects.map((item) => {
-          const {
-            title,
-            description,
-            tech,
-            github,
-            cover,
-            external } = item.node.frontmatter;
-          const image = getImage(cover);
+        {featuredProjects.map(item => {
+          const { title, description, tech, github, cover, external } =
+            item.node.frontmatter
+          const image = getImage(cover)
 
           return (
-            <StyledProjectCard>
-              <div className="project-content">
-                <span className="project-subtitle">Featured Project</span>
-                <h4 className="project-title">{title}</h4>
-                <p className="project-description">{description}</p>
-                <ul className="project-tech">
-                  {tech.map((tech) => {
-                    if (tech) {
-                      return <li>{tech}</li>
-                    }
-                  })}
-                </ul>
-                <div className="project-links">
-                  <Link to={github}>
-                    <Icon name="GitHub"/>
-                  </Link>
-                  <Link to={external}>
-                    <Icon name="External"/>
-                  </Link>
+            <StyledProjectCard colorTheme={state.theme}>
+              <Fade
+                bottom
+                duration={800}
+                distance="50px">
+                <div className="project-content">
+                  <span className="project-subtitle">Featured Project</span>
+                  <h4 className="project-title">{title}</h4>
+                  <p className="project-description">{description}</p>
+                  <ul className="project-tech">
+                    {tech.map(tech => {
+                      if (tech) {
+                        return <li>{tech}</li>
+                      }
+                    })}
+                  </ul>
+                  <div className="project-links">
+                    <Link to={github}>
+                      <Icon name="GitHub" />
+                    </Link>
+                    <Link to={external}>
+                      <Icon name="External" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-              <div className="project-img">
-                <div className="wrapper">
-                  <GatsbyImage image={image} alt={title} className="img" />
+                <div className="project-img">
+                  <div className="wrapper">
+                    <GatsbyImage image={image} alt={title} className="img" />
+                  </div>
                 </div>
-              </div>
-            </ StyledProjectCard>
+              </Fade>
+            </StyledProjectCard>
           )
         })}
       </ul>
@@ -237,5 +265,4 @@ const Projects = () => {
   )
 }
 
-
-export default Projects;
+export default Projects
