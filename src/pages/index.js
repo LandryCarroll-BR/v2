@@ -1,25 +1,25 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Hero from "../components/sections/hero"
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Featured from "../components/sections/featured"
 import Projects from "../components/sections/projects"
 
-const BlogIndex = ({ data, location }) => {
+const Home = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const designerData = data
 
   return (
     <Layout location={location} title={siteTitle}>
       <Hero />
+      <Featured designerData={designerData} />
       <Projects />
     </Layout>
   )
 }
 
-export default BlogIndex
-
+export default Home
 export const pageQuery = graphql`
   query {
     site {
@@ -27,16 +27,27 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
+    featured: allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/designer/" } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            title
+            description
+            tech
+            cover {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 700
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
+            github
+            external
+          }
         }
       }
     }
