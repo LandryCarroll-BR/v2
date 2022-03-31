@@ -219,7 +219,7 @@ const Featured = ({ designerData }) => {
     } else {
       setFeaturedProjects(developerProjects)
     }
-  }, [state, designerProjects, developerProjects])
+  }, [state])
 
   const getFeatured = () => {
     return featuredProjects.map(item => {
