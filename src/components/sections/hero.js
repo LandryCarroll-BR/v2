@@ -3,9 +3,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import Icon from "../icons/icon"
 import { Link } from "gatsby"
-import {
-  GlobalStateContext
-} from '../../context/GlobalContextProvider';
+import { GlobalStateContext } from "../../context/GlobalContextProvider"
 
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -27,12 +25,6 @@ const StyledPic = styled.div`
   max-width: 140px;
   border-radius: 100vh !important;
   cursor: initial;
-
-  /* .wrapper::after {
-    background: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-  } */
 
   * {
     border-radius: 100vh !important;
@@ -57,9 +49,8 @@ const StyledContent = styled.div`
 
   h1 {
     margin: 22px 0 0px 0px;
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     font-size: clamp(var(--fz-md), 5vw, var(--fz-xl));
     font-weight: 400;
     text-align: center;
@@ -85,10 +76,9 @@ const StyledContent = styled.div`
   }
 
   .heading-period {
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    transition: var(--transition)
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    transition: var(--transition);
   }
 
   p {
@@ -116,35 +106,11 @@ const StyledContent = styled.div`
 
   .portfolio {
     ${({ theme }) => theme.mixins.bigButton};
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    border-color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    &:hover {
-      background-color: ${
-        props => props.colorTheme === 'designer' ?
-        'var(--purple-tint)' : 'var(--cyan-tint)'
-      };
-    }
   }
 
   .gitHub {
     ${({ theme }) => theme.mixins.bigButton};
     padding: 1.125rem 1.75rem !important;
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    border-color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    &:hover {
-      background-color: ${
-        props => props.colorTheme === 'designer' ?
-        'var(--purple-tint)' : 'var(--cyan-tint)'
-      };
-    }
 
     & svg {
       color: inherit;
@@ -156,7 +122,7 @@ const StyledContent = styled.div`
 `
 
 const Hero = () => {
-  const state = useContext(GlobalStateContext);
+  const state = useContext(GlobalStateContext)
 
   return (
     <StyledHeroSection>
@@ -182,7 +148,7 @@ const Hero = () => {
           experience working as a web developer Intern for Entrepreneurs Across
           Borders, some freelance work, along with some personal projects, of
           course. My goal is to keep learning and improving my various skills so
-          I can make more impactful products and applications. 👍
+          I can make more impactful products and applications.
         </p>
         <div className="wrapper">
           <Link className="portfolio">My Portfolio</Link>

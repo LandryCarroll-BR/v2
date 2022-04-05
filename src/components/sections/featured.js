@@ -8,21 +8,12 @@ import { GlobalStateContext } from "../../context/GlobalContextProvider"
 
 const StyledProjects = styled.section`
   h2 {
-    margin-bottom: 2em;
-    position: relative;
-    width: fit-content;
-  }
+    ${({ theme }) => theme.mixins.sectionTitle}
 
-  h2::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: -180%;
-    width: 150%;
-    height: 1px;
-    background-color: ${props =>
-      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
-    transition: var(--transition);
+    &::after {
+      background-color: ${props =>
+        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    }
   }
 
   ul {
@@ -142,12 +133,18 @@ const StyledProjectCard = styled.li`
   .project-links {
     display: flex;
     justify-content: flex-start;
-    margin-top: 1.2em;
+    margin: 1em 0;
 
-    * {
+    a {
       width: 24px;
       margin: 0 14px 0 0;
       color: var(--slate);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: ${props =>
+        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
 
@@ -172,18 +169,19 @@ const StyledProjectCard = styled.li`
   }
 `
 
-const Featured = ({ designerData }) => {
+const Featured = () => {
   const state = useContext(GlobalStateContext)
   const [featuredProjects, setFeaturedProjects] = useState([])
 
-  const developerData = useStaticQuery(graphql`
+  const data = useStaticQuery(graphql`
     {
       featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/developer/" } }
+        filter: { fileAbsolutePath: { regex: "/featured/" } }
       ) {
         edges {
           node {
             frontmatter {
+              type
               title
               description
               tech
@@ -205,13 +203,13 @@ const Featured = ({ designerData }) => {
     }
   `)
 
-  const developerProjects = developerData.featured.edges.filter(
-    ({ node }) => node
-  )
+  const developerProjects = data.featured.edges
+    .filter(({ node }) => node)
+    .filter(item => item.node.frontmatter.type === "developer")
 
-  const designerProjects = designerData.featured.edges.filter(
-    ({ node }) => node
-  )
+  const designerProjects = data.featured.edges
+    .filter(({ node }) => node)
+    .filter(item => item.node.frontmatter.type === "designer")
 
   useEffect(() => {
     if (state.theme === "designer") {
@@ -221,35 +219,61 @@ const Featured = ({ designerData }) => {
     }
   }, [state])
 
+  const getLinks = (github, dribbble, external) => {
+    let links = []
+
+    if (github) {
+      links.push(
+        <a href={github}>
+          <Icon name="github" />
+        </a>
+      )
+    }
+    if (dribbble) {
+      links.push(
+        <a href={dribbble}>
+          <Icon name="dribbble" />
+        </a>
+      )
+    }
+    if (external) {
+      links.push(
+        <a href={external}>
+          <Icon name="external" />
+        </a>
+      )
+    }
+    console.log(links)
+    return links
+  }
+
   const getFeatured = () => {
     return featuredProjects.map(item => {
-      const { title, description, tech, github, cover, external } =
+      const { title, description, tech, github, cover, external, dribbble } =
         item.node.frontmatter
       const image = getImage(cover)
 
       return (
         <StyledProjectCard colorTheme={state.theme}>
-          <Fade bottom duration={800} distance="50px" spy={state}>
+          <Fade
+            bottom
+            spy={state}
+            duration={600}
+            distance="40px"
+            cascade
+            appear
+          >
             <div className="project-content">
               <span className="project-subtitle">Featured Project</span>
               <h4 className="project-title">{title}</h4>
               <p className="project-description">{description}</p>
               <ul className="project-tech">
-                {() => {
-                  if (tech) {
-                    tech.map(tech => {
-                      return <li>{tech}</li>
-                    })
-                  }
-                }}
+                {tech.map(tech => {
+                  return <li>{tech}</li>
+                })}
               </ul>
               <div className="project-links">
-                <Link to={github}>
-                  <Icon name="GitHub" />
-                </Link>
-                <Link to={external}>
-                  <Icon name="External" />
-                </Link>
+                {getLinks(github, dribbble, external)}
               </div>
             </div>
             <div className="project-img">
@@ -264,7 +288,7 @@ const Featured = ({ designerData }) => {
   }
 
   return (
-    <StyledProjects colorTheme={state.theme}>
+    <StyledProjects colorTheme={state.theme} id="featured">
       <Fade bottom duration={800} distance="50px">
         <h2>Featured Projects</h2>
       </Fade>

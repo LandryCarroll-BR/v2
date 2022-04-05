@@ -2,12 +2,13 @@ import { css } from "styled-components"
 
 const variables = css`
   :root {
+    --lighter-blue: #2a405c;
     --blue: #0e2240;
     --dark-blue: #09182e;
     --blue-shadow: #030c19;
     --cyan: #3ee5df;
     --cyan-tint: rgba(0, 201, 194, 0.08);
-    --purple: #DDA3FF;
+    --purple: #dda3ff;
     --purple-tint: rgba(221, 163, 255, 0.08);
     --white: #f0ebf2;
     --slate: #bdbabf;
@@ -22,7 +23,7 @@ const variables = css`
       rgba(183, 59, 250, 1) 100%
     );
 
-    --border-radius: 0.25em;
+    --border-radius: 0.4em;
     --transition: 200ms;
 
     --fz-xxs: 12px;

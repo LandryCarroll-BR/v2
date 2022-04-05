@@ -45,6 +45,21 @@ const mixins = {
       box-shadow: 0 20px 30px -15px var(--blue-shadow);
     }
   `,
+  sectionTitle: css`
+    margin-bottom: 2em;
+    position: relative;
+    width: fit-content;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 160px;
+      margin-left: 30px;
+      height: 1px;
+      transition: var(--transition);
+    }
+  `,
 
   inlineLink: css`
     transition: var(--transition);
@@ -58,7 +73,6 @@ const mixins = {
         width: 100%;
       }
       & > * {
-        color: var(--cyan) !important;
         transition: var(--transition);
       }
     }
@@ -69,7 +83,6 @@ const mixins = {
       height: 1px;
       position: relative;
       bottom: 0.1em;
-      background-color: var(--cyan);
       transition: var(--transition);
       opacity: 0.5;
     }
@@ -85,7 +98,7 @@ const mixins = {
       transition: 200ms;
     }
 
-    .wrapper:hover{
+    .wrapper:hover {
       filter: brightness(1.3);
     }
 
@@ -100,7 +113,7 @@ const mixins = {
       background: var(--gradient);
       mix-blend-mode: multiply;
       overflow: hidden;
-      transition: var(--transition)
+      transition: var(--transition);
     }
 
     .img {
@@ -135,6 +148,16 @@ const mixins = {
     &:after {
       display: none !important;
     }
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    border-color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    &:hover {
+      background-color: ${props =>
+        props.colorTheme === "designer"
+          ? "var(--purple-tint)"
+          : "var(--cyan-tint)"};
+    }
   `,
 
   bigButton: css`
@@ -156,6 +179,16 @@ const mixins = {
     }
     &:after {
       display: none !important;
+    }
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    border-color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+    &:hover {
+      background-color: ${props =>
+        props.colorTheme === "designer"
+          ? "var(--purple-tint)"
+          : "var(--cyan-tint)"};
     }
   `,
 

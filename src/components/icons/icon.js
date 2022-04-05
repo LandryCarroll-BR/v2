@@ -7,7 +7,7 @@ import IconLogo from "../icons/logo"
 // eslint-disable-next-line react/prop-types
 const Icon = ({ name }) => {
   switch (name) {
-    case "GitHub":
+    case "github":
       return <IconGitHub />
     case "Logo":
       return <IconLogo />

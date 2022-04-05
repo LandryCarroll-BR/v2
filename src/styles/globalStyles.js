@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
   width: 100%;
   min-height: 100%;
   overflow-x: auto;
-  overflow-behavior-y: none;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   background-color: var(--navy);
@@ -104,15 +103,15 @@ const GlobalStyle = createGlobalStyle`
 
   section {
     margin: 0 auto;
-    padding: 100px 0;
+    padding: 80px 0;
     max-width: 1000px;
 
     @media (max-width: 768px) {
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     @media (max-width: 480px) {
-      padding: 60px 0;
+      padding: 50px 0;
     }
   }
 

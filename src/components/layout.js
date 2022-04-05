@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useEffect } from "react"
 import { ThemeProvider } from "styled-components"
 import GlobalStyle from "../styles/globalStyles"
 import theme from "../styles/theme"
@@ -6,7 +6,7 @@ import Nav from "./nav"
 import Copyright from "./copyright"
 import Email from "./email"
 
-const Layout = ({ location, title, children }) => {
+const Layout = ({ location, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
 

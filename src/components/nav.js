@@ -4,8 +4,8 @@ import styled from "styled-components"
 import Icon from "./icons/icon"
 import {
   GlobalDispatchContext,
-  GlobalStateContext
-} from '../context/GlobalContextProvider';
+  GlobalStateContext,
+} from "../context/GlobalContextProvider"
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -35,30 +35,25 @@ const StyledNav = styled.nav`
 
   svg {
     width: 24px;
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     margin-right: 24px;
     transition: 200ms;
   }
 
   .toggle {
-    color: ${
-      props => props.colorTheme === 'designer' ?
-      'var(--slate)' : 'var(--cyan)'
-    };
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--slate)" : "var(--cyan)"};
     cursor: pointer;
-    transition: var(--transition)
+    transition: var(--transition);
   }
 
   .toggle:last-of-type {
     margin-right: auto;
     margin-left: 12px;
     font-weight: 400;
-    color: ${
-      props => props.colorTheme === 'designer' ?
-      'var(--purple)' : 'var(--slate)'
-    };
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--slate)"};
   }
 
   .home,
@@ -71,9 +66,8 @@ const StyledNav = styled.nav`
   .home:hover,
   .projects:hover,
   .contact:hover {
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
+    color: ${props =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
   }
 
   .projects,
@@ -84,24 +78,12 @@ const StyledNav = styled.nav`
 
   .resume {
     ${({ theme }) => theme.mixins.smallButton}
-    color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    border-color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
-    &:hover {
-      background-color: ${
-        props => props.colorTheme === 'designer' ?
-        'var(--purple-tint)' : 'var(--cyan-tint)'
-      };
-    }
   }
 `
 
 const Nav = () => {
-  const dispatch = useContext(GlobalDispatchContext);
-  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext)
+  const state = useContext(GlobalStateContext)
 
   return (
     <StyledHeader>
@@ -110,20 +92,26 @@ const Nav = () => {
         <span
           className="toggle"
           onClick={() => {
-            dispatch({type: 'TOGGLE_THEME'});
-          }}>Developer</span>
+            dispatch({ type: "TOGGLE_THEME" })
+          }}
+        >
+          Developer
+        </span>
         <span
           className="toggle"
           onClick={() => {
-            dispatch({type: 'TOGGLE_THEME'});
-          }}>Designer</span>
+            dispatch({ type: "TOGGLE_THEME" })
+          }}
+        >
+          Designer
+        </span>
         <Link className="home" to="/">
           Home
         </Link>
-        <Link className="projects" to="/projects">
+        <Link className="projects" to="#featured">
           Projects
         </Link>
-        <Link className="contact" to="/contact">
+        <Link className="contact" to="#contact">
           Contact
         </Link>
         <Link className="resume" to="/">
