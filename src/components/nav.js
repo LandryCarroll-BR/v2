@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React, { useContext } from "react"
 import styled from "styled-components"
 import Icon from "./icons/icon"
+import Menu from "./menu"
 import {
   GlobalDispatchContext,
   GlobalStateContext,
@@ -13,13 +14,11 @@ const StyledHeader = styled.header`
   right: 0;
   z-index: 200;
   width: 100%;
-  padding: 24px 50px;
   margin: 0 auto;
   background-color: var(--dark-blue);
-  display: none;
+  padding: 18px 24px;
 
   @media (min-width: 768px) {
-    display: block;
     padding: 24px 36px;
   }
 
@@ -61,6 +60,11 @@ const StyledNav = styled.nav`
   .contact {
     color: var(--slate);
     transition: var(--transition);
+    display: none;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
   }
 
   .home:hover,
@@ -78,6 +82,11 @@ const StyledNav = styled.nav`
 
   .resume {
     ${({ theme }) => theme.mixins.smallButton}
+    display: none;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
   }
 `
 
@@ -117,6 +126,7 @@ const Nav = () => {
         <Link className="resume" to="/">
           Resume
         </Link>
+        <Menu />
       </StyledNav>
     </StyledHeader>
   )

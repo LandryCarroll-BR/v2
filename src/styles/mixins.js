@@ -48,16 +48,36 @@ const mixins = {
   sectionTitle: css`
     margin-bottom: 2em;
     position: relative;
-    width: fit-content;
+    width: auto;
 
     &::after {
       content: "";
       position: absolute;
       top: 50%;
-      width: 160px;
+      width: 80px;
+      max-width: 140px;
       margin-left: 30px;
       height: 1px;
       transition: var(--transition);
+
+      @media (max-width: 480px) {
+        display: none;
+      }
+    }
+  `,
+
+  link: css`
+    display: inline-block;
+    text-decoration: none;
+    text-decoration-skip-ink: auto;
+    color: inherit;
+    position: relative;
+    transition: var(--transition);
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--green);
+      outline: 0;
     }
   `,
 

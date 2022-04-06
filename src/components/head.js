@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 // https://www.gatsbyjs.com/docs/add-seo-component/
 
-const Seo = ({ title, description, image }) => {
+const Head = ({ title, description, image }) => {
   const { pathname } = useLocation()
 
   const { site } = useStaticQuery(
@@ -50,19 +50,24 @@ const Seo = ({ title, description, image }) => {
       <meta property="og:image" content={seo.image} />
       <meta property="og:url" content={seo.url} />
       <meta property="og:type" content="website" />
+
+      <meta
+        name="google-site-verification"
+        content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk"
+      />
     </Helmet>
   )
 }
 
-export default Seo
+export default Head
 
-Seo.propTypes = {
+Head.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   image: PropTypes.string,
 }
 
-Seo.defaultProps = {
+Head.defaultProps = {
   title: null,
   description: null,
   image: null,

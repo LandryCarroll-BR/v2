@@ -25,6 +25,7 @@ const variables = css`
 
     --border-radius: 0.4em;
     --transition: 200ms;
+    --hamburger-width: 26px;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;

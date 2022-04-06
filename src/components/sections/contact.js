@@ -17,24 +17,37 @@ const StyledContactSection = styled.section`
       position: absolute;
       top: 50%;
       right: 100%;
-      width: 160px;
+      width: 80%;
       margin-right: 70px;
       height: 1px;
       transition: var(--transition);
       background-color: ${props =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+
+      @media (max-width: 500px) {
+        width: 60px;
+      }
+      @media (max-width: 480px) {
+        display: none;
+      }
     }
 
     &::after {
       content: "";
       position: absolute;
       top: 50%;
-      width: 160px;
+      width: 80%;
       margin-left: 70px;
       height: 1px;
       transition: var(--transition);
       background-color: ${props =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+      @media (max-width: 500px) {
+        width: 60px;
+      }
+      @media (max-width: 480px) {
+        display: none;
+      }
     }
   }
 
@@ -55,15 +68,19 @@ const Contact = () => {
 
   return (
     <StyledContactSection colorTheme={state.theme} id="contact">
-      <h2 className="section-title">Contact</h2>
-      <p className="description">
-        If you’re looking for a new addition to the team, a fellow human needing
-        help with a new project, or just someone who feels like saying hello,
-        then feel free to send me an email! 👋
-      </p>
-      <a className="contact-button" href="mailto:hello@landrycarroll.com">
-        Say Hello
-      </a>
+      <Fade bottom duration={600} distance="40px">
+        <h2 className="section-title">Contact</h2>
+      </Fade>
+      <Fade bottom spy={state} duration={600} distance="90px" appear>
+        <p className="description">
+          If you’re looking for a new addition to the team, a fellow human
+          needing help with a new project, or just someone who feels like saying
+          hello, then feel free to send me an email! 👋
+        </p>
+        <a className="contact-button" href="mailto:hello@landrycarroll.com">
+          Say Hello
+        </a>
+      </Fade>
     </StyledContactSection>
   )
 }

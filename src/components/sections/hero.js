@@ -6,23 +6,33 @@ import { Link } from "gatsby"
 import { GlobalStateContext } from "../../context/GlobalContextProvider"
 
 const StyledHeroSection = styled.section`
-  ${({ theme }) => theme.mixins.flexCenter};
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  grid-gap: 12px;
-
-  @media (min-width: 734px) {
-    grid-gap: 42px;
+  height: 100vh;
+  padding: 2em 0 0 0;
+  @media (min-width: 769px) {
+    padding: 0;
   }
+  .container {
+    ${({ theme }) => theme.mixins.flexCenter};
+    flex-direction: column;
+    grid-gap: 12px;
 
-  @media (min-width: 1200px) {
-    justify-content: space-between;
-    flex-direction: row;
+    @media (min-width: 769px) {
+      grid-gap: 42px;
+      justify-content: space-between;
+      flex-direction: row;
+    }
+
+    @media (min-width: 1200px) {
+    }
   }
 `
 const StyledPic = styled.div`
   ${({ theme }) => theme.mixins.overlay};
-  max-width: 140px;
+  max-width: 100px;
   border-radius: 100vh !important;
   cursor: initial;
 
@@ -32,6 +42,10 @@ const StyledPic = styled.div`
 
   .img {
     border-width: 2px;
+  }
+
+  @media (min-width: 400px) {
+    max-width: 140px;
   }
 
   @media (min-width: 734px) {
@@ -46,6 +60,7 @@ const StyledPic = styled.div`
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 
   h1 {
     margin: 22px 0 0px 0px;
@@ -56,7 +71,7 @@ const StyledContent = styled.div`
     text-align: center;
     transition: var(--transition);
 
-    @media (min-width: 1200px) {
+    @media (min-width: 769px) {
       margin: 0 0 0px 4px;
       text-align: left;
     }
@@ -68,10 +83,13 @@ const StyledContent = styled.div`
     line-height: 0.9;
     font-weight: 500;
     text-align: center;
-
-    @media (min-width: 1200px) {
+    font-size: clamp(32px, 8vw, 50px);
+    @media (min-width: 769px) {
       margin: 20px 0 0 0;
       text-align: left;
+    }
+    @media (min-width: 1200px) {
+      font-size: clamp(40px, 8vw, 80px);
     }
   }
 
@@ -105,12 +123,21 @@ const StyledContent = styled.div`
   }
 
   .portfolio {
-    ${({ theme }) => theme.mixins.bigButton};
+    ${({ theme }) => theme.mixins.smallButton};
+
+    @media (min-width: 350px) {
+      ${({ theme }) => theme.mixins.bigButton};
+    }
   }
 
   .gitHub {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 1.125rem 1.75rem !important;
+    ${({ theme }) => theme.mixins.smallButton};
+    padding: 0.6rem 0.8rem !important;
+
+    @media (min-width: 350px) {
+      ${({ theme }) => theme.mixins.bigButton};
+      padding: 1.125rem 1.75rem !important;
+    }
 
     & svg {
       color: inherit;
@@ -126,38 +153,39 @@ const Hero = () => {
 
   return (
     <StyledHeroSection>
-      <StyledPic colorTheme={state.theme}>
-        <div className="wrapper">
-          <StaticImage
-            className="img"
-            src="../../images/me.png"
-            width={500}
-            quality={95}
-            formats={["AUTO", "WEBP", "AVIF"]}
-            alt="Headshot"
-          />
-        </div>
-      </StyledPic>
-      <StyledContent colorTheme={state.theme}>
-        <h1>Hi, my name is</h1>
-        <h3 className="big-heading">
-          Landry Carroll<span className="heading-period">.</span>
-        </h3>
-        <p>
-          I’m a designer-gone-developer who started coding back in 2020. I have
-          experience working as a web developer Intern for Entrepreneurs Across
-          Borders, some freelance work, along with some personal projects, of
-          course. My goal is to keep learning and improving my various skills so
-          I can make more impactful products and applications.
-        </p>
-        <div className="wrapper">
-          <Link className="portfolio">My Portfolio</Link>
-          <Link className="gitHub">
-            <Icon name="GitHub" />
-            GitHub
-          </Link>
-        </div>
-      </StyledContent>
+      <div className="container">
+        <StyledPic colorTheme={state.theme}>
+          <div className="wrapper">
+            <StaticImage
+              className="img"
+              src="../../images/me.png"
+              width={500}
+              quality={95}
+              formats={["AUTO", "WEBP", "AVIF"]}
+              alt="Headshot"
+            />
+          </div>
+        </StyledPic>
+        <StyledContent colorTheme={state.theme}>
+          <h1>Hi, my name is</h1>
+          <h3 className="big-heading">
+            Landry Carroll<span className="heading-period">.</span>
+          </h3>
+          <p>
+            I’m a designer-gone-developer who started coding back in 2020. I
+            have experience working as a web developer Intern for Entrepreneurs
+            Across Borders, some freelance work, along with some personal
+            projects, of course.
+          </p>
+          <div className="wrapper">
+            <Link className="portfolio">My Portfolio</Link>
+            <Link className="gitHub">
+              <Icon name="GitHub" />
+              GitHub
+            </Link>
+          </div>
+        </StyledContent>
+      </div>
     </StyledHeroSection>
   )
 }

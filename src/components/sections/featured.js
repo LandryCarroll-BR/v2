@@ -32,6 +32,11 @@ const StyledProjectCard = styled.li`
   @media (max-width: 600px) {
     display: flex;
     flex-direction: column-reverse;
+    margin: 0 auto 40px auto;
+  }
+
+  &:last-child {
+    margin: 0 auto;
   }
 
   &:nth-of-type(even) {
@@ -203,15 +208,15 @@ const Featured = () => {
     }
   `)
 
-  const developerProjects = data.featured.edges
-    .filter(({ node }) => node)
-    .filter(item => item.node.frontmatter.type === "developer")
-
-  const designerProjects = data.featured.edges
-    .filter(({ node }) => node)
-    .filter(item => item.node.frontmatter.type === "designer")
-
   useEffect(() => {
+    const developerProjects = data.featured.edges
+      .filter(({ node }) => node)
+      .filter(item => item.node.frontmatter.type === "developer")
+
+    const designerProjects = data.featured.edges
+      .filter(({ node }) => node)
+      .filter(item => item.node.frontmatter.type === "designer")
+
     if (state.theme === "designer") {
       setFeaturedProjects(designerProjects)
     } else {

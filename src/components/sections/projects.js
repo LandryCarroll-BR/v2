@@ -19,8 +19,15 @@ const StyledProjectsSection = styled.section`
   .project-container {
     ${({ theme }) => theme.mixins.resetList}
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 16px;
+
+    @media (min-width: 600px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 940px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   .project-card {
