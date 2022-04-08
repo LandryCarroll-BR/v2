@@ -5,14 +5,15 @@ import React from "react"
 export const GlobalStateContext = React.createContext()
 export const GlobalDispatchContext = React.createContext()
 
-const windowGlobal = typeof window !== "undefined" && window
-const local = windowGlobal.localStorage.getItem("theme")
-// const local = ""
-
 //persistant theme on page reload
 const handleLocal = () => {
-  if (local) {
+  const windowGlobal = typeof window !== "undefined" && window
+
+  if (windowGlobal) {
+    const local = windowGlobal.localStorage.getItem("theme")
     return local === "designer" ? "designer" : "developer"
+  } else {
+    return "developer"
   }
 }
 const handleState = theme => {

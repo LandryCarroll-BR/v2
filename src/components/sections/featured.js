@@ -154,11 +154,25 @@ const StyledProjectCard = styled.li`
   }
 
   .project-img {
-    ${({ theme }) => theme.mixins.overlay};
-    /* .wrapper::after {
-      background: ${props =>
-      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
-    } */
+    ${({ theme }) => theme.mixins.boxShadow}
+    .wrapper {
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      transition: filter var(--transition);
+    }
+
+    img {
+      transition: transform var(--transition);
+    }
+
+    .wrapper:hover {
+      filter: brightness(1.1);
+    }
+
+    .wrapper:hover img {
+      transform: scale(1.02);
+    }
+
     position: relative;
     height: 100%;
     grid-column: 6 / 13;
@@ -282,9 +296,9 @@ const Featured = () => {
               </div>
             </div>
             <div className="project-img">
-              <div className="wrapper">
+              <a className="wrapper" href={external}>
                 <GatsbyImage image={image} alt={title} className="img" />
-              </div>
+              </a>
             </div>
           </Fade>
         </StyledProjectCard>

@@ -180,7 +180,7 @@ const Hero = () => {
           <div className="wrapper">
             <Link className="portfolio">My Portfolio</Link>
             <Link className="gitHub">
-              <Icon name="GitHub" />
+              <Icon name="github" />
               GitHub
             </Link>
           </div>
