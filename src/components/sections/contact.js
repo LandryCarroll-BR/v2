@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
-import Fade from "react-reveal/Fade"
 import { GlobalStateContext } from "../../context/GlobalContextProvider"
 
 const StyledContactSection = styled.section`
@@ -68,19 +67,15 @@ const Contact = () => {
 
   return (
     <StyledContactSection colorTheme={state.theme} id="contact">
-      <Fade bottom duration={600} distance="40px">
-        <h2 className="section-title">Contact</h2>
-      </Fade>
-      <Fade bottom spy={state} duration={600} distance="90px" appear>
-        <p className="description">
-          If you’re looking for a new addition to the team, a fellow human
-          needing help with a new project, or just someone who feels like saying
-          hello, then feel free to send me an email! 👋
-        </p>
-        <a className="contact-button" href="mailto:hello@landrycarroll.com">
-          Say Hello
-        </a>
-      </Fade>
+      <h2 className="section-title">Contact</h2>
+      <p className="description">
+        If you’re looking for a new addition to the team, a fellow human needing
+        help with a new project, or just someone who feels like saying hello,
+        then feel free to send me an email! 👋
+      </p>
+      <a className="contact-button" href="mailto:hello@landrycarroll.com">
+        Say Hello
+      </a>
     </StyledContactSection>
   )
 }

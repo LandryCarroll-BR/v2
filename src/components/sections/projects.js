@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Fade from "react-reveal/Fade"
 import { GlobalStateContext } from "../../context/GlobalContextProvider"
 import Icon from "../icons/icon"
 
@@ -202,13 +201,9 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection colorTheme={state.theme}>
-      <Fade bottom duration={600} distance="40px">
-        <h2 className="section-title">Other Projects</h2>
-      </Fade>
+      <h2 className="section-title">Other Projects</h2>
 
-      <Fade bottom spy={state} duration={600} distance="90px" appear>
-        <ul className="project-container">{getProjects()}</ul>
-      </Fade>
+      <ul className="project-container">{getProjects()}</ul>
     </StyledProjectsSection>
   )
 }

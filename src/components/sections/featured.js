@@ -3,7 +3,6 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import styled from "styled-components"
 import Icon from "../icons/icon"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Fade from "react-reveal/Fade"
 import { GlobalStateContext } from "../../context/GlobalContextProvider"
 
 const StyledProjects = styled.section`
@@ -274,33 +273,24 @@ const Featured = () => {
 
       return (
         <StyledProjectCard colorTheme={state.theme}>
-          <Fade
-            bottom
-            spy={state}
-            duration={600}
-            distance="40px"
-            cascade
-            appear
-          >
-            <div className="project-content">
-              <span className="project-subtitle">Featured Project</span>
-              <h4 className="project-title">{title}</h4>
-              <p className="project-description">{description}</p>
-              <ul className="project-tech">
-                {tech.map(tech => {
-                  return <li>{tech}</li>
-                })}
-              </ul>
-              <div className="project-links">
-                {getLinks(github, dribbble, external)}
-              </div>
+          <div className="project-content">
+            <span className="project-subtitle">Featured Project</span>
+            <h4 className="project-title">{title}</h4>
+            <p className="project-description">{description}</p>
+            <ul className="project-tech">
+              {tech.map(tech => {
+                return <li>{tech}</li>
+              })}
+            </ul>
+            <div className="project-links">
+              {getLinks(github, dribbble, external)}
             </div>
-            <div className="project-img">
-              <a className="wrapper" href={external}>
-                <GatsbyImage image={image} alt={title} className="img" />
-              </a>
-            </div>
-          </Fade>
+          </div>
+          <div className="project-img">
+            <a className="wrapper" href={external}>
+              <GatsbyImage image={image} alt={title} className="img" />
+            </a>
+          </div>
         </StyledProjectCard>
       )
     })
@@ -308,9 +298,7 @@ const Featured = () => {
 
   return (
     <StyledProjects colorTheme={state.theme} id="featured">
-      <Fade bottom duration={800} distance="50px">
-        <h2>Featured Projects</h2>
-      </Fade>
+      <h2>Featured Projects</h2>
       <ul className="projects">{getFeatured()}</ul>
     </StyledProjects>
   )
