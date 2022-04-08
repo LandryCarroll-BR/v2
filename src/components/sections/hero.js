@@ -1,9 +1,9 @@
-import React, { useContext } from "react"
-import { StaticImage } from "gatsby-plugin-image"
-import styled from "styled-components"
-import Icon from "../icons/icon"
-import { Link } from "gatsby"
-import { GlobalStateContext } from "../../context/GlobalContextProvider"
+import React, { useContext } from "react";
+import { StaticImage } from "gatsby-plugin-image";
+import styled from "styled-components";
+import Icon from "../icons/icon";
+import { Link } from "gatsby";
+import { GlobalStateContext } from "../../context/GlobalContextProvider";
 
 const StyledHeroSection = styled.section`
   display: flex;
@@ -29,7 +29,7 @@ const StyledHeroSection = styled.section`
     @media (min-width: 1200px) {
     }
   }
-`
+`;
 const StyledPic = styled.div`
   ${({ theme }) => theme.mixins.overlay};
   max-width: 100px;
@@ -56,7 +56,7 @@ const StyledPic = styled.div`
     max-width: 300px;
     width: 100%;
   }
-`
+`;
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@ const StyledContent = styled.div`
 
   h1 {
     margin: 22px 0 0px 0px;
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     font-size: clamp(var(--fz-md), 5vw, var(--fz-xl));
     font-weight: 400;
@@ -94,7 +94,7 @@ const StyledContent = styled.div`
   }
 
   .heading-period {
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     transition: var(--transition);
   }
@@ -146,15 +146,15 @@ const StyledContent = styled.div`
       margin-right: 4px;
     }
   }
-`
+`;
 
 const Hero = () => {
-  const state = useContext(GlobalStateContext)
+  const state = useContext(GlobalStateContext);
 
   return (
     <StyledHeroSection>
       <div className="container">
-        <StyledPic colorTheme={state.theme}>
+        <StyledPic colorTheme={state ? state.theme : "developer"}>
           <div className="wrapper">
             <StaticImage
               className="img"
@@ -166,7 +166,7 @@ const Hero = () => {
             />
           </div>
         </StyledPic>
-        <StyledContent colorTheme={state.theme}>
+        <StyledContent colorTheme={state ? state.theme : "developer"}>
           <h1>Hi, my name is</h1>
           <h3 className="big-heading">
             Landry Carroll<span className="heading-period">.</span>
@@ -187,7 +187,7 @@ const Hero = () => {
         </StyledContent>
       </div>
     </StyledHeroSection>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

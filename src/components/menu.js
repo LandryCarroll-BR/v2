@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
-import { Helmet } from "react-helmet"
-import { Link } from "gatsby"
-import styled from "styled-components"
-import { navLinks } from "../utils/config"
-import { KEY_CODES } from "../utils/index"
-import useOnClickOutside from "../hooks/useOnClickOutside"
-import { GlobalStateContext } from "../context/GlobalContextProvider"
+import React, { useState, useEffect, useRef, useContext } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "gatsby";
+import styled from "styled-components";
+import { navLinks } from "../utils/config";
+import { KEY_CODES } from "../utils/index";
+import useOnClickOutside from "../hooks/useOnClickOutside";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const StyledMenu = styled.div`
   display: block;
@@ -13,7 +13,7 @@ const StyledMenu = styled.div`
   @media (max-width: 768px) {
     display: block;
   }
-`
+`;
 
 const StyledHamburgerButton = styled.button`
   display: none;
@@ -47,14 +47,14 @@ const StyledHamburgerButton = styled.button`
     width: var(--hamburger-width);
     height: 2px;
     border-radius: var(--border-radius);
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     transition-duration: 0.22s;
     transition-property: transform;
-    transition-delay: ${props => (props.menuOpen ? `0.12s` : `0s`)};
-    transform: rotate(${props => (props.menuOpen ? `225deg` : `0deg`)});
+    transition-delay: ${(props) => (props.menuOpen ? `0.12s` : `0s`)};
+    transform: rotate(${(props) => (props.menuOpen ? `225deg` : `0deg`)});
     transition-timing-function: cubic-bezier(
-      ${props =>
+      ${(props) =>
         props.menuOpen ? `0.215, 0.61, 0.355, 1` : `0.55, 0.055, 0.675, 0.19`}
     );
     &:before,
@@ -67,28 +67,28 @@ const StyledHamburgerButton = styled.button`
       width: var(--hamburger-width);
       height: 2px;
       border-radius: 4px;
-      background-color: ${props =>
+      background-color: ${(props) =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
       transition-timing-function: ease;
       transition-duration: 0.15s;
       transition-property: transform;
     }
     &:before {
-      width: ${props => (props.menuOpen ? `100%` : `120%`)};
-      top: ${props => (props.menuOpen ? `0` : `-10px`)};
-      opacity: ${props => (props.menuOpen ? 0 : 1)};
+      width: ${(props) => (props.menuOpen ? `100%` : `120%`)};
+      top: ${(props) => (props.menuOpen ? `0` : `-10px`)};
+      opacity: ${(props) => (props.menuOpen ? 0 : 1)};
       transition: ${({ menuOpen }) =>
         menuOpen ? "var(--ham-before-active)" : "var(--ham-before)"};
     }
     &:after {
-      width: ${props => (props.menuOpen ? `100%` : `80%`)};
-      bottom: ${props => (props.menuOpen ? `0` : `-10px`)};
-      transform: rotate(${props => (props.menuOpen ? `-90deg` : `0`)});
+      width: ${(props) => (props.menuOpen ? `100%` : `80%`)};
+      bottom: ${(props) => (props.menuOpen ? `0` : `-10px`)};
+      transform: rotate(${(props) => (props.menuOpen ? `-90deg` : `0`)});
       transition: ${({ menuOpen }) =>
         menuOpen ? "var(--ham-after-active)" : "var(--ham-after)"};
     }
   }
-`
+`;
 
 const StyledSidebar = styled.aside`
   display: none;
@@ -106,8 +106,8 @@ const StyledSidebar = styled.aside`
     background-color: var(--blue);
     box-shadow: -10px 0px 30px -15px var(--blue-shadow);
     z-index: 9;
-    transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
-    visibility: ${props => (props.menuOpen ? "visible" : "hidden")};
+    transform: translateX(${(props) => (props.menuOpen ? 0 : 100)}vw);
+    visibility: ${(props) => (props.menuOpen ? "visible" : "hidden")};
     transition: var(--transition);
   }
 
@@ -139,7 +139,7 @@ const StyledSidebar = styled.aside`
         content: "0" counter(item) ".";
         display: block;
         margin-bottom: 5px;
-        color: ${props =>
+        color: ${(props) =>
           props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
         font-size: var(--fz-sm);
       }
@@ -158,91 +158,91 @@ const StyledSidebar = styled.aside`
     margin: 10% auto 0;
     width: max-content;
   }
-`
+`;
 
 const Menu = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const state = useContext(GlobalStateContext)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const state = useContext(GlobalStateContext);
 
-  const toggleMenu = () => setMenuOpen(!menuOpen)
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const buttonRef = useRef(null)
-  const navRef = useRef(null)
+  const buttonRef = useRef(null);
+  const navRef = useRef(null);
 
-  let menuFocusables
-  let firstFocusableEl
-  let lastFocusableEl
+  let menuFocusables;
+  let firstFocusableEl;
+  let lastFocusableEl;
 
   const setFocusables = () => {
     menuFocusables = [
       buttonRef.current,
       ...Array.from(navRef.current.querySelectorAll("a")),
-    ]
-    firstFocusableEl = menuFocusables[0]
-    lastFocusableEl = menuFocusables[menuFocusables.length - 1]
-  }
+    ];
+    firstFocusableEl = menuFocusables[0];
+    lastFocusableEl = menuFocusables[menuFocusables.length - 1];
+  };
 
-  const handleBackwardTab = e => {
+  const handleBackwardTab = (e) => {
     if (document.activeElement === firstFocusableEl) {
-      e.preventDefault()
-      lastFocusableEl.focus()
+      e.preventDefault();
+      lastFocusableEl.focus();
     }
-  }
+  };
 
-  const handleForwardTab = e => {
+  const handleForwardTab = (e) => {
     if (document.activeElement === lastFocusableEl) {
-      e.preventDefault()
-      firstFocusableEl.focus()
+      e.preventDefault();
+      firstFocusableEl.focus();
     }
-  }
+  };
 
-  const onKeyDown = e => {
+  const onKeyDown = (e) => {
     switch (e.key) {
       case KEY_CODES.ESCAPE:
       case KEY_CODES.ESCAPE_IE11: {
-        setMenuOpen(false)
-        break
+        setMenuOpen(false);
+        break;
       }
 
       case KEY_CODES.TAB: {
         if (menuFocusables && menuFocusables.length === 1) {
-          e.preventDefault()
-          break
+          e.preventDefault();
+          break;
         }
         if (e.shiftKey) {
-          handleBackwardTab(e)
+          handleBackwardTab(e);
         } else {
-          handleForwardTab(e)
+          handleForwardTab(e);
         }
-        break
+        break;
       }
 
       default: {
-        break
+        break;
       }
     }
-  }
+  };
 
-  const onResize = e => {
+  const onResize = (e) => {
     if (e.currentTarget.innerWidth > 768) {
-      setMenuOpen(false)
+      setMenuOpen(false);
     }
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("keydown", onKeyDown)
-    window.addEventListener("resize", onResize)
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
 
-    setFocusables()
+    setFocusables();
 
     return () => {
-      document.removeEventListener("keydown", onKeyDown)
-      window.removeEventListener("resize", onResize)
-    }
-  }, [])
+      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, []);
 
-  const wrapperRef = useRef()
-  useOnClickOutside(wrapperRef, () => setMenuOpen(false))
+  const wrapperRef = useRef();
+  useOnClickOutside(wrapperRef, () => setMenuOpen(false));
 
   return (
     <StyledMenu>
@@ -256,8 +256,7 @@ const Menu = () => {
           menuOpen={menuOpen}
           ref={buttonRef}
           aria-label="Menu"
-          colorTheme={state.theme}
-        >
+          colorTheme={state ? state.theme : "developer"}>
           <div className="ham-box">
             <div className="ham-box-inner" />
           </div>
@@ -267,8 +266,7 @@ const Menu = () => {
           menuOpen={menuOpen}
           aria-hidden={!menuOpen}
           tabIndex={menuOpen ? 1 : -1}
-          colorTheme={state.theme}
-        >
+          colorTheme={state ? state.theme : "developer"}>
           <nav ref={navRef}>
             {navLinks && (
               <ol>
@@ -289,7 +287,7 @@ const Menu = () => {
         </StyledSidebar>
       </div>
     </StyledMenu>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

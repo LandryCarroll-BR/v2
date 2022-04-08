@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import styled from "styled-components"
-import Icon from "../icons/icon"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { GlobalStateContext } from "../../context/GlobalContextProvider"
+import React, { useContext, useEffect, useState } from "react";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import styled from "styled-components";
+import Icon from "../icons/icon";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GlobalStateContext } from "../../context/GlobalContextProvider";
 
 const StyledProjects = styled.section`
   h2 {
     ${({ theme }) => theme.mixins.sectionTitle}
 
     &::after {
-      background-color: ${props =>
+      background-color: ${(props) =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
@@ -18,7 +18,7 @@ const StyledProjects = styled.section`
   ul {
     ${({ theme }) => theme.mixins.resetList}
   }
-`
+`;
 const StyledProjectCard = styled.li`
   position: relative;
   display: grid;
@@ -105,7 +105,7 @@ const StyledProjectCard = styled.li`
   }
 
   .project-subtitle {
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     font-size: var(--fz-sm);
     transition: var(--transition);
@@ -147,7 +147,7 @@ const StyledProjectCard = styled.li`
     }
 
     a:hover {
-      color: ${props =>
+      color: ${(props) =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
@@ -185,11 +185,11 @@ const StyledProjectCard = styled.li`
       grid-column: 4 / 13;
     }
   }
-`
+`;
 
 const Featured = () => {
-  const state = useContext(GlobalStateContext)
-  const [featuredProjects, setFeaturedProjects] = useState([])
+  const state = useContext(GlobalStateContext);
+  const [featuredProjects, setFeaturedProjects] = useState([]);
 
   const data = useStaticQuery(graphql`
     {
@@ -219,57 +219,57 @@ const Featured = () => {
         }
       }
     }
-  `)
+  `);
 
   useEffect(() => {
     const developerProjects = data.featured.edges
       .filter(({ node }) => node)
-      .filter(item => item.node.frontmatter.type === "developer")
+      .filter((item) => item.node.frontmatter.type === "developer");
 
     const designerProjects = data.featured.edges
       .filter(({ node }) => node)
-      .filter(item => item.node.frontmatter.type === "designer")
+      .filter((item) => item.node.frontmatter.type === "designer");
 
     if (state.theme === "designer") {
-      setFeaturedProjects(designerProjects)
+      setFeaturedProjects(designerProjects);
     } else {
-      setFeaturedProjects(developerProjects)
+      setFeaturedProjects(developerProjects);
     }
-  }, [state])
+  }, [state]);
 
   const getLinks = (github, dribbble, external) => {
-    let links = []
+    let links = [];
 
     if (github) {
       links.push(
         <a href={github}>
           <Icon name="github" />
         </a>
-      )
+      );
     }
     if (dribbble) {
       links.push(
         <a href={dribbble}>
           <Icon name="dribbble" />
         </a>
-      )
+      );
     }
     if (external) {
       links.push(
         <a href={external}>
           <Icon name="external" />
         </a>
-      )
+      );
     }
-    console.log(links)
-    return links
-  }
+    console.log(links);
+    return links;
+  };
 
   const getFeatured = () => {
-    return featuredProjects.map(item => {
+    return featuredProjects.map((item) => {
       const { title, description, tech, github, cover, external, dribbble } =
-        item.node.frontmatter
-      const image = getImage(cover)
+        item.node.frontmatter;
+      const image = getImage(cover);
 
       return (
         <StyledProjectCard colorTheme={state.theme}>
@@ -278,8 +278,8 @@ const Featured = () => {
             <h4 className="project-title">{title}</h4>
             <p className="project-description">{description}</p>
             <ul className="project-tech">
-              {tech.map(tech => {
-                return <li>{tech}</li>
+              {tech.map((tech) => {
+                return <li>{tech}</li>;
               })}
             </ul>
             <div className="project-links">
@@ -292,16 +292,18 @@ const Featured = () => {
             </a>
           </div>
         </StyledProjectCard>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
-    <StyledProjects colorTheme={state.theme} id="featured">
+    <StyledProjects
+      colorTheme={state ? state.theme : "developer"}
+      id="featured">
       <h2>Featured Projects</h2>
       <ul className="projects">{getFeatured()}</ul>
     </StyledProjects>
-  )
-}
+  );
+};
 
-export default Featured
+export default Featured;

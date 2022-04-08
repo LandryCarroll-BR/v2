@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from "react"
-import styled from "styled-components"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { GlobalStateContext } from "../../context/GlobalContextProvider"
-import Icon from "../icons/icon"
+import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GlobalStateContext } from "../../context/GlobalContextProvider";
+import Icon from "../icons/icon";
 
 const StyledProjectsSection = styled.section`
   .section-title {
     ${({ theme }) => theme.mixins.sectionTitle}
 
     &::after {
-      background-color: ${props =>
+      background-color: ${(props) =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
@@ -71,7 +71,7 @@ const StyledProjectsSection = styled.section`
         right: 0;
         width: 100%;
         height: 100%;
-        background-color: ${props =>
+        background-color: ${(props) =>
           props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
         mix-blend-mode: multiply;
         transition: opcaity var(--transition);
@@ -93,15 +93,15 @@ const StyledProjectsSection = styled.section`
     }
 
     a:hover {
-      color: ${props =>
+      color: ${(props) =>
         props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
-`
+`;
 
 const Projects = () => {
-  const state = useContext(GlobalStateContext)
-  const [projects, setProjects] = useState([])
+  const state = useContext(GlobalStateContext);
+  const [projects, setProjects] = useState([]);
 
   const data = useStaticQuery(graphql`
     {
@@ -132,57 +132,57 @@ const Projects = () => {
         }
       }
     }
-  `)
+  `);
 
   const developerProjects = data.projects.edges
     .filter(({ node }) => node)
-    .filter(item => item.node.frontmatter.type === "developer")
+    .filter((item) => item.node.frontmatter.type === "developer");
 
   const designerProjects = data.projects.edges
     .filter(({ node }) => node)
-    .filter(item => item.node.frontmatter.type === "designer")
+    .filter((item) => item.node.frontmatter.type === "designer");
 
   useEffect(() => {
     if (state.theme === "designer") {
-      setProjects(designerProjects)
+      setProjects(designerProjects);
     } else {
-      setProjects(developerProjects)
+      setProjects(developerProjects);
     }
-  }, [state])
+  }, [state]);
 
   const getLinks = (github, dribbble, external) => {
-    let links = []
+    let links = [];
 
     if (github) {
       links.push(
         <a href={github}>
           <Icon name="github" />
         </a>
-      )
+      );
     }
     if (dribbble) {
       links.push(
         <a href={dribbble}>
           <Icon name="dribbble" />
         </a>
-      )
+      );
     }
     if (external) {
       links.push(
         <a href={external}>
           <Icon name="external" />
         </a>
-      )
+      );
     }
-    console.log(links)
-    return links
-  }
+    console.log(links);
+    return links;
+  };
 
   const getProjects = () => {
-    return projects.map(item => {
+    return projects.map((item) => {
       const { title, description, github, dribbble, external, cover } =
-        item.node.frontmatter
-      const image = getImage(cover)
+        item.node.frontmatter;
+      const image = getImage(cover);
 
       return (
         <li className="project-card">
@@ -195,17 +195,17 @@ const Projects = () => {
             {getLinks(github, dribbble, external)}
           </div>
         </li>
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
-    <StyledProjectsSection colorTheme={state.theme}>
+    <StyledProjectsSection colorTheme={state ? state.theme : "developer"}>
       <h2 className="section-title">Other Projects</h2>
 
       <ul className="project-container">{getProjects()}</ul>
     </StyledProjectsSection>
-  )
-}
+  );
+};
 
-export default Projects
+export default Projects;

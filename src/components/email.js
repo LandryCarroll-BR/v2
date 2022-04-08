@@ -1,9 +1,7 @@
-import React, { useContext } from "react"
-import styled from "styled-components"
-import Side from "./side"
-import {
-  GlobalStateContext
-} from '../context/GlobalContextProvider';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import Side from "./side";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const StyledLinkWrapper = styled.div`
   display: flex;
@@ -34,23 +32,22 @@ const StyledLinkWrapper = styled.div`
     &:hover,
     &:focus {
       transform: translateY(-3px);
-      color: ${
-      props => props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'
-    };
+      color: ${(props) =>
+        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     }
   }
-`
+`;
 
 const Email = () => {
   const state = useContext(GlobalStateContext);
-  
+
   return (
     <Side orientation="right">
-      <StyledLinkWrapper colorTheme={state.theme}>
+      <StyledLinkWrapper colorTheme={state ? state.theme : "developer"}>
         <a href={`mailto:hello@landrycarroll.com`}>hello@landrycarroll.com</a>
       </StyledLinkWrapper>
     </Side>
-  )
-  }
+  );
+};
 
-export default Email
+export default Email;

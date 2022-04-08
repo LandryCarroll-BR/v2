@@ -1,12 +1,12 @@
-import { Link } from "gatsby"
-import React, { useContext } from "react"
-import styled from "styled-components"
-import Icon from "./icons/icon"
-import Menu from "./menu"
+import { Link } from "gatsby";
+import React, { useContext } from "react";
+import styled from "styled-components";
+import Icon from "./icons/icon";
+import Menu from "./menu";
 import {
   GlobalDispatchContext,
   GlobalStateContext,
-} from "../context/GlobalContextProvider"
+} from "../context/GlobalContextProvider";
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
   @media (min-width: 1080px) {
     padding: 24px 50px;
   }
-`
+`;
 
 const StyledNav = styled.nav`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -34,14 +34,14 @@ const StyledNav = styled.nav`
 
   svg {
     width: 24px;
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     margin-right: 24px;
     transition: 200ms;
   }
 
   .toggle {
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--slate)" : "var(--cyan)"};
     cursor: pointer;
     transition: var(--transition);
@@ -51,7 +51,7 @@ const StyledNav = styled.nav`
     margin-right: auto;
     margin-left: 12px;
     font-weight: 400;
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--slate)"};
   }
 
@@ -70,7 +70,7 @@ const StyledNav = styled.nav`
   .home:hover,
   .projects:hover,
   .contact:hover {
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
   }
 
@@ -88,30 +88,28 @@ const StyledNav = styled.nav`
       display: flex;
     }
   }
-`
+`;
 
 const Nav = () => {
-  const dispatch = useContext(GlobalDispatchContext)
-  const state = useContext(GlobalStateContext)
+  const dispatch = useContext(GlobalDispatchContext);
+  const state = useContext(GlobalStateContext);
 
   return (
     <StyledHeader>
-      <StyledNav colorTheme={state.theme}>
+      <StyledNav colorTheme={state ? state.theme : "developer"}>
         <Icon className="logo" name="Logo" />
         <span
           className="toggle"
           onClick={() => {
-            dispatch({ type: "TOGGLE_THEME" })
-          }}
-        >
+            dispatch({ type: "TOGGLE_THEME" });
+          }}>
           Developer
         </span>
         <span
           className="toggle"
           onClick={() => {
-            dispatch({ type: "TOGGLE_THEME" })
-          }}
-        >
+            dispatch({ type: "TOGGLE_THEME" });
+          }}>
           Designer
         </span>
         <Link className="home" to="/">
@@ -129,7 +127,7 @@ const Nav = () => {
         <Menu />
       </StyledNav>
     </StyledHeader>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
