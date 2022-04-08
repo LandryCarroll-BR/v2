@@ -1,14 +1,16 @@
-import * as React from "react"
-import { graphql } from "gatsby"
-import Seo from "../components/seo"
-import Hero from "../components/sections/hero"
-import Layout from "../components/layout"
-import Featured from "../components/sections/featured"
-import Projects from "../components/sections/projects"
-import Contact from "../components/sections/contact"
+import * as React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import Seo from "../components/seo";
+import Hero from "../components/sections/hero";
+import Featured from "../components/sections/featured";
+import Projects from "../components/sections/projects";
+import Contact from "../components/sections/contact";
 
-const Home = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+// markup
+const IndexPage = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata?.title || `Title`;
+
   return (
     <Layout location={location} title={siteTitle}>
       <Seo />
@@ -17,10 +19,10 @@ const Home = ({ data, location }) => {
       <Projects />
       <Contact />
     </Layout>
-  )
-}
+  );
+};
 
-export default Home
+export default IndexPage;
 
 export const pageQuery = graphql`
   query {
@@ -30,4 +32,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
