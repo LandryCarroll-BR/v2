@@ -71,8 +71,6 @@ const StyledProjectsSection = styled.section`
         right: 0;
         width: 100%;
         height: 100%;
-        background-color: ${(props) =>
-          props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
         mix-blend-mode: multiply;
         transition: opcaity var(--transition);
       }

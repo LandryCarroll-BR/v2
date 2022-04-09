@@ -157,7 +157,8 @@ const StyledProjectCard = styled.li`
     .wrapper {
       border-radius: var(--border-radius);
       overflow: hidden;
-      transition: filter var(--transition);
+      opacity: 0.9;
+      transition: opacity var(--transition);
     }
 
     img {
@@ -165,7 +166,7 @@ const StyledProjectCard = styled.li`
     }
 
     .wrapper:hover {
-      filter: brightness(1.1);
+      opacity: 1;
     }
 
     .wrapper:hover img {

@@ -5,30 +5,31 @@ import React from "react";
 export const GlobalStateContext = React.createContext();
 export const GlobalDispatchContext = React.createContext();
 
-//persistant theme on page reload
-// const handleLocal = () => {
-//   const windowGlobal = typeof window !== undefined && window;
+// persistant theme on page reload
+const handleLocal = () => {
+  const windowGlobal = typeof window !== undefined && window;
 
-//   if (windowGlobal) {
-//     const local = windowGlobal.localStorage.getItem("theme");
-//     return local === "designer" ? "designer" : "developer";
-//   } else {
-//     return "developer";
-//   }
-// };
+  if (windowGlobal) {
+    const local = windowGlobal.localStorage.getItem("theme");
+    return local === "designer" ? "designer" : "developer";
+  } else {
+    return "developer";
+  }
+};
 
 const handleState = (theme) => {
-  if (theme === "developer") {
-    localStorage.setItem("theme", "designer");
+  const windowGlobal = typeof window !== undefined && window;
+  if (theme === "developer" && windowGlobal) {
+    windowGlobal.localStorage.setItem("theme", "designer");
     return "designer";
   } else {
-    localStorage.setItem("theme", "developer");
+    windowGlobal.localStorage.setItem("theme", "developer");
     return "developer";
   }
 };
 
 const initialState = {
-  theme: "designer",
+  theme: handleLocal(),
 };
 
 const reducer = (state, action) => {
