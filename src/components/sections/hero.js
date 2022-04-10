@@ -31,7 +31,9 @@ const StyledHeroSection = styled.section`
   }
 `;
 const StyledPic = styled.div`
-  @media (min-width: 400px) {
+  max-width: 100px;
+
+  @media (min-width: 380px) {
     max-width: 140px;
   }
 
@@ -67,6 +69,8 @@ const StyledPic = styled.div`
     mix-blend-mode: multiply;
     overflow: hidden;
     transition: var(--transition);
+    overflow: hidden;
+    border-radius: 100vh;
   }
 
   .img {

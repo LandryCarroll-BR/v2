@@ -6,6 +6,7 @@ import Hero from "../components/sections/hero";
 import Featured from "../components/sections/featured";
 import Projects from "../components/sections/projects";
 import Contact from "../components/sections/contact";
+import Footer from "../components/sections/footer";
 
 // markup
 const IndexPage = ({ data, location }) => {
@@ -18,6 +19,7 @@ const IndexPage = ({ data, location }) => {
       <Featured />
       <Projects />
       <Contact />
+      <Footer />
     </Layout>
   );
 };
