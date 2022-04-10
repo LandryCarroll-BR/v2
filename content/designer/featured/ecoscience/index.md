@@ -1,14 +1,14 @@
 ---
 type: "designer"
 date: "1"
-title: "Featured Design Project 1"
-description: "Featured designer project description #1. Here's my project I hope you like it!"
+title: "EcoScience Resource Group"
+description: "Info graphic design work for the plant/refinery industry."
 cover: "./demo.png"
 github: "#"
 dribbble: "https://dribbble.com/Carroll025390"
 external: "#"
 tech:
   - Illustrator
-  - Adobe XD
   - Photoshop
+  - Microsft Office
 ---

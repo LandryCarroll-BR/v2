@@ -170,7 +170,7 @@ const StyledProjectCard = styled.li`
     }
 
     .wrapper:hover img {
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
     position: relative;
