@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
 import Icon from "../icons/icon";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";

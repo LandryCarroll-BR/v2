@@ -41,7 +41,6 @@ const StyledPic = styled.div`
 
   @media (min-width: 1200px) {
     max-width: 300px;
-    width: 100%;
   }
   .wrapper {
     ${({ theme }) => theme.mixins.boxShadow};

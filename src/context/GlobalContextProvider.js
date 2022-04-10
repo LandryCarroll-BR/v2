@@ -7,23 +7,9 @@ export const GlobalDispatchContext = React.createContext();
 
 const handleState = (theme) => {
   if (theme === "developer") {
-    localStorage.setItem("theme", "designer");
     return "designer";
   } else {
-    localStorage.setItem("theme", "developer");
     return "developer";
-  }
-};
-
-const getInitialState = () => {
-  if (localStorage === undefined) {
-    return {
-      theme: "developer",
-    };
-  } else {
-    return {
-      theme: localStorage.getItem("theme"),
-    };
   }
 };
 
@@ -41,7 +27,9 @@ const reducer = (state, action) => {
 };
 
 const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = React.useReducer(reducer, getInitialState());
+  const [state, dispatch] = React.useReducer(reducer, {
+    theme: "developer",
+  });
   return (
     <GlobalStateContext.Provider value={state}>
       <GlobalDispatchContext.Provider value={dispatch}>
