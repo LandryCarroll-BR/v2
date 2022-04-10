@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 const variables = css`
   :root {
@@ -24,7 +24,7 @@ const variables = css`
     );
 
     --border-radius: 0.4em;
-    --transition: 200ms;
+    --transition: 150ms;
     --hamburger-width: 26px;
 
     --fz-xxs: 12px;
@@ -38,6 +38,6 @@ const variables = css`
     --font-sans: "Inter", "San Francisco", "SF Pro Text", -apple-system,
       system-ui, sans-serif;
   }
-`
+`;
 
-export default variables
+export default variables;

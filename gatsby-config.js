@@ -57,7 +57,7 @@ module.exports = {
         name: `LandryCarroll`,
         short_name: `LandryCarroll`,
         start_url: `/`,
-        background_color: `##09182e`,
+        background_color: `#09182e`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,

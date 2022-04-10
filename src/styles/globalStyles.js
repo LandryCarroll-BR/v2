@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import variables from "./variables"
+import { createGlobalStyle } from "styled-components";
+import variables from "./variables";
 
 const GlobalStyle = createGlobalStyle`
   ${variables};
@@ -38,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
   overflow-x: auto;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--navy);
+  background-color: var(--dark-blue);
   color: var(--slate);
   font-family: var(--font-sans);
   font-size: var(--fz-lg);
@@ -150,6 +150,6 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

@@ -5,31 +5,26 @@ import React from "react";
 export const GlobalStateContext = React.createContext();
 export const GlobalDispatchContext = React.createContext();
 
-// persistant theme on page reload
-const handleLocal = () => {
-  const windowGlobal = typeof window !== undefined && window;
-
-  if (windowGlobal) {
-    const local = windowGlobal.localStorage.getItem("theme");
-    return local === "designer" ? "designer" : "developer";
-  } else {
-    return "developer";
-  }
-};
-
 const handleState = (theme) => {
-  const windowGlobal = typeof window !== undefined && window;
-  if (theme === "developer" && windowGlobal) {
-    windowGlobal.localStorage.setItem("theme", "designer");
+  if (theme === "developer") {
+    localStorage.setItem("theme", "designer");
     return "designer";
   } else {
-    windowGlobal.localStorage.setItem("theme", "developer");
+    localStorage.setItem("theme", "developer");
     return "developer";
   }
 };
 
-const initialState = {
-  theme: handleLocal(),
+const getInitialState = () => {
+  if (localStorage === undefined) {
+    return {
+      theme: "developer",
+    };
+  } else {
+    return {
+      theme: localStorage.getItem("theme"),
+    };
+  }
 };
 
 const reducer = (state, action) => {
@@ -46,7 +41,7 @@ const reducer = (state, action) => {
 };
 
 const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+  const [state, dispatch] = React.useReducer(reducer, getInitialState());
   return (
     <GlobalStateContext.Provider value={state}>
       <GlobalDispatchContext.Provider value={dispatch}>

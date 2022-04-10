@@ -156,7 +156,7 @@ const StyledProjectCard = styled.li`
     ${({ theme }) => theme.mixins.boxShadow}
     .wrapper {
       border-radius: var(--border-radius);
-      overflow: hidden;
+      overflow: hidden !important;
       opacity: 0.9;
       transition: opacity var(--transition);
     }
@@ -262,7 +262,6 @@ const Featured = () => {
         </a>
       );
     }
-    console.log(links);
     return links;
   };
 

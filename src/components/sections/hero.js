@@ -31,19 +31,6 @@ const StyledHeroSection = styled.section`
   }
 `;
 const StyledPic = styled.div`
-  ${({ theme }) => theme.mixins.overlay};
-  max-width: 100px;
-  border-radius: 100vh !important;
-  cursor: initial;
-
-  * {
-    border-radius: 100vh !important;
-  }
-
-  .img {
-    border-width: 2px;
-  }
-
   @media (min-width: 400px) {
     max-width: 140px;
   }
@@ -55,6 +42,41 @@ const StyledPic = styled.div`
   @media (min-width: 1200px) {
     max-width: 300px;
     width: 100%;
+  }
+  .wrapper {
+    ${({ theme }) => theme.mixins.boxShadow};
+    position: relative;
+    overflow: hidden;
+    border-radius: 100vh;
+    cursor: pointer;
+    transition: 200ms;
+  }
+
+  .wrapper:hover {
+    filter: brightness(1.2);
+  }
+
+  .wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    mix-blend-mode: multiply;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .img {
+    position: relative;
+    filter: grayscale(100%);
+    z-index: 1;
+    border: 2px solid #fff;
+    border-radius: 100vh;
+    transition: 200ms;
   }
 `;
 const StyledContent = styled.div`

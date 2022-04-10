@@ -63,17 +63,10 @@ const StyledProjectsSection = styled.section`
       overflow: hidden;
       opacity: 0.8;
       transition: opacity var(--transition);
+    }
 
-      &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        mix-blend-mode: multiply;
-        transition: opcaity var(--transition);
-      }
+    .wrapper:hover {
+      opacity: 1;
     }
   }
 
@@ -172,7 +165,6 @@ const Projects = () => {
         </a>
       );
     }
-    console.log(links);
     return links;
   };
 
@@ -185,9 +177,9 @@ const Projects = () => {
       return (
         <li className="project-card">
           <h4 className="title">{title}</h4>
-          <div className="wrapper">
+          <a href={external} className="wrapper">
             <GatsbyImage image={image} alt={title} className="img" />
-          </div>
+          </a>
           <p className="description">{description}</p>
           <div className="project-links">
             {getLinks(github, dribbble, external)}
