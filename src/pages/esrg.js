@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
-import ImageGrid from "../components/sections/imageGrid";
+import ImageGrid from "../components/imageGrid";
 
 // markup
 const esrg = ({ data, location }) => {

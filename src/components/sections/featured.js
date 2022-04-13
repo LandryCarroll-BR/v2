@@ -231,7 +231,7 @@ const Featured = () => {
       .filter(({ node }) => node)
       .filter((item) => item.node.frontmatter.type === "designer");
 
-    if (state.theme === "designer") {
+    if (state ? state.theme : "developer" === "designer") {
       setFeaturedProjects(designerProjects);
     } else {
       setFeaturedProjects(developerProjects);
@@ -272,7 +272,7 @@ const Featured = () => {
       const image = getImage(cover);
 
       return (
-        <StyledProjectCard colorTheme={state.theme}>
+        <StyledProjectCard colorTheme={state ? state.theme : "developer"}>
           <div className="project-content">
             <span className="project-subtitle">Featured Project</span>
             <h4 className="project-title">{title}</h4>

@@ -2,7 +2,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import Img from "gatsby-image";
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { GlobalStateContext } from "../../context/GlobalContextProvider";
+import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const StyledImageGrid = styled.section`
   max-width: 1500px;
@@ -28,7 +28,7 @@ const ImageGrid = ({ title, content }) => {
   const state = useContext(GlobalStateContext);
   const images = content.edges.map((item) => item.node.childImageSharp);
   return (
-    <StyledImageGrid colorTheme={state.theme}>
+    <StyledImageGrid colorTheme={state ? state.theme : "developer"}>
       <h2>{title}</h2>
 
       <ul className="grid">

@@ -134,7 +134,7 @@ const Projects = () => {
     .filter((item) => item.node.frontmatter.type === "designer");
 
   useEffect(() => {
-    if (state.theme === "designer") {
+    if (state ? state.theme : "developer" === "designer") {
       setProjects(designerProjects);
     } else {
       setProjects(developerProjects);

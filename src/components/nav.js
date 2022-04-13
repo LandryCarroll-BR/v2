@@ -49,6 +49,7 @@ const StyledNav = styled.nav`
     border: none;
     background: none;
     padding: none !important;
+    margin: none !important;
     font-size: inherit;
     font-weight: inherit;
     font-family: inherit;
@@ -102,7 +103,7 @@ const Nav = () => {
 
   return (
     <StyledHeader>
-      <StyledNav colorTheme={state.theme}>
+      <StyledNav colorTheme={state ? state.theme : "developer"}>
         <a className="logo" href="/">
           <Icon className="logo" name="Logo" />
         </a>
