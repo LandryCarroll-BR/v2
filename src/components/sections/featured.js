@@ -231,7 +231,7 @@ const Featured = () => {
       .filter(({ node }) => node)
       .filter((item) => item.node.frontmatter.type === "designer");
 
-    if (state ? state.theme : "developer" === "designer") {
+    if (state.theme === "designer") {
       setFeaturedProjects(designerProjects);
     } else {
       setFeaturedProjects(developerProjects);
