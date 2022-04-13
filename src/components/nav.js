@@ -45,11 +45,17 @@ const StyledNav = styled.nav`
       props.colorTheme === "designer" ? "var(--slate)" : "var(--cyan)"};
     cursor: pointer;
     transition: var(--transition);
+    outline: none;
+    border: none;
+    background: none;
+    padding: none !important;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
   }
 
   .toggle:last-of-type {
     margin-right: auto;
-    margin-left: 12px;
     font-weight: 400;
     color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--slate)"};
@@ -96,34 +102,36 @@ const Nav = () => {
 
   return (
     <StyledHeader>
-      <StyledNav colorTheme={state ? state.theme : "developer"}>
-        <Icon className="logo" name="Logo" />
-        <span
+      <StyledNav colorTheme={state.theme}>
+        <a className="logo" href="/">
+          <Icon className="logo" name="Logo" />
+        </a>
+        <button
           className="toggle"
           onClick={() => {
             dispatch({ type: "TOGGLE_THEME" });
           }}>
           Developer
-        </span>
-        <span
+        </button>
+        <button
           className="toggle"
           onClick={() => {
             dispatch({ type: "TOGGLE_THEME" });
           }}>
           Designer
-        </span>
-        <Link className="home" to="/">
+        </button>
+        <a className="home" href="/">
           Home
-        </Link>
-        <Link className="projects" to="#featured">
+        </a>
+        <a className="projects" href="#featured">
           Projects
-        </Link>
-        <Link className="contact" to="#contact">
+        </a>
+        <a className="contact" href="#contact">
           Contact
-        </Link>
-        <Link className="resume" to="/">
+        </a>
+        <a className="resume" href="/">
           Resume
-        </Link>
+        </a>
         <Menu />
       </StyledNav>
     </StyledHeader>

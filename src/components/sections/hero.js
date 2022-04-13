@@ -179,7 +179,7 @@ const Hero = () => {
   return (
     <StyledHeroSection>
       <div className="container">
-        <StyledPic colorTheme={state ? state.theme : "developer"}>
+        <StyledPic colorTheme={state.theme}>
           <div className="wrapper">
             <StaticImage
               className="img"
@@ -191,7 +191,7 @@ const Hero = () => {
             />
           </div>
         </StyledPic>
-        <StyledContent colorTheme={state ? state.theme : "developer"}>
+        <StyledContent colorTheme={state.theme}>
           <h1>Hi, my name is</h1>
           <h3 className="big-heading">
             Landry Carroll<span className="heading-period">.</span>
