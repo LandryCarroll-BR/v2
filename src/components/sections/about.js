@@ -137,7 +137,7 @@ const About = () => {
 
   console.log(about.tech);
   return (
-    <StyledAboutSection colorTheme={state.theme}>
+    <StyledAboutSection colorTheme={state ? state.theme : "developer"}>
       <h2>About Me</h2>
       <div className="wrapper">
         <div className="bio-container">
