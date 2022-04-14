@@ -98,6 +98,7 @@ const Projects = () => {
     {
       projects: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/projects/" } }
+        sort: { fields: frontmatter___date }
       ) {
         edges {
           node {

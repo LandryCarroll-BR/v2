@@ -1,14 +1,12 @@
 ---
 type: "developer"
-date: "2"
-title: "Brochure Website"
-description: "Featured developer project description #2. Here's my project I hope you like it!"
+date: "1"
+title: "Entreprenuers Across Borders"
+description: "EABI was working on a new landing page and needed a design. This proof of concept is a fully responsive brochure website, designed and built using my own custom CSS properties."
 cover: "./demo.png"
 github: "https://github.com/LandryCarroll-BR"
 dribbble: "#"
 external: "https://eabi-4fc4e.web.app/"
 tech:
   - React
-  - Redux
-  - Firebase
 ---

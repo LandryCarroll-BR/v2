@@ -7,6 +7,7 @@ import Featured from "../components/sections/featured";
 import Projects from "../components/sections/projects";
 import Contact from "../components/sections/contact";
 import Footer from "../components/sections/footer";
+import About from "../components/sections/about";
 
 // markup
 const IndexPage = ({ data, location }) => {
@@ -16,6 +17,7 @@ const IndexPage = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo />
       <Hero />
+      <About />
       <Featured />
       <Projects />
       <Contact />

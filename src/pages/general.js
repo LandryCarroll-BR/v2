@@ -4,21 +4,21 @@ import Layout from "../components/layout";
 import ImageGrid from "../components/imageGrid";
 
 // markup
-const logos = ({ data, location }) => {
+const general = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   return (
     <Layout location={location} title={siteTitle}>
       <ImageGrid
-        title="Logos"
+        title="Various Designs"
         content={data.content}
-        minWidth="clamp(120px, 32vw, 300px)"
+        minWidth="clamp(200px, 30vw, 400px)"
       />
     </Layout>
   );
 };
 
-export default logos;
+export default general;
 
 export const pageQuery = graphql`
   query {
@@ -27,12 +27,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    content: allFile(filter: { absolutePath: { regex: "/logos/" } }) {
+    content: allFile(filter: { absolutePath: { regex: "/general/" } }) {
       edges {
         node {
           id
           childImageSharp {
-            fluid(maxWidth: 300, quality: 100) {
+            fluid(maxWidth: 400, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

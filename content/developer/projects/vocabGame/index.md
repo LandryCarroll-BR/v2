@@ -1,6 +1,6 @@
 ---
 type: "developer"
-date: "1"
+date: "2"
 title: "Vocabulay Matching Game"
 description: "An interactive vocabulary memorization game created with React.js."
 cover: "./thumbnail.png"

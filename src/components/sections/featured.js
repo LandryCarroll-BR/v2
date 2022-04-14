@@ -196,6 +196,7 @@ const Featured = () => {
     {
       featured: allMarkdownRemark(
         filter: { fileAbsolutePath: { regex: "/featured/" } }
+        sort: { fields: frontmatter___date }
       ) {
         edges {
           node {
@@ -222,15 +223,15 @@ const Featured = () => {
     }
   `);
 
+  const developerProjects = data.featured.edges
+    .filter(({ node }) => node)
+    .filter((item) => item.node.frontmatter.type === "developer");
+
+  const designerProjects = data.featured.edges
+    .filter(({ node }) => node)
+    .filter((item) => item.node.frontmatter.type === "designer");
+
   useEffect(() => {
-    const developerProjects = data.featured.edges
-      .filter(({ node }) => node)
-      .filter((item) => item.node.frontmatter.type === "developer");
-
-    const designerProjects = data.featured.edges
-      .filter(({ node }) => node)
-      .filter((item) => item.node.frontmatter.type === "designer");
-
     if (state.theme === "designer") {
       setFeaturedProjects(designerProjects);
     } else {

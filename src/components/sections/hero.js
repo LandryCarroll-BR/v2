@@ -137,6 +137,10 @@ const StyledContent = styled.div`
     }
   }
 
+  .inline-link {
+    ${({ theme }) => theme.mixins.inlineLink}
+  }
+
   .wrapper {
     position: relative;
     display: flex;
@@ -155,7 +159,8 @@ const StyledContent = styled.div`
     }
   }
 
-  .gitHub {
+  .gitHub,
+  .dribbble {
     ${({ theme }) => theme.mixins.smallButton};
     padding: 0.6rem 0.8rem !important;
 
@@ -168,10 +173,37 @@ const StyledContent = styled.div`
       color: inherit;
       height: 18px;
       width: auto;
-      margin-right: 4px;
+      margin-right: 8px;
     }
   }
 `;
+
+const getExternalLink = (state) => {
+  if (!state) {
+    return (
+      <Link className="gitHub" to="https://github.com/LandryCarroll-BR">
+        <Icon name="github" />
+        GitHub
+      </Link>
+    );
+  }
+
+  if (state.theme === "designer") {
+    return (
+      <Link className="dribbble" to="https://dribbble.com/Carroll025390">
+        <Icon name="dribbble" />
+        Dribbble
+      </Link>
+    );
+  } else {
+    return (
+      <Link className="gitHub" to="https://github.com/LandryCarroll-BR">
+        <Icon name="github" />
+        GitHub
+      </Link>
+    );
+  }
+};
 
 const Hero = () => {
   const state = useContext(GlobalStateContext);
@@ -197,17 +229,19 @@ const Hero = () => {
             Landry Carroll<span className="heading-period">.</span>
           </h3>
           <p>
-            I’m a designer-gone-developer who started coding back in 2020. I
-            have experience working as a web developer Intern for Entrepreneurs
-            Across Borders, some freelance work, along with some personal
-            projects, of course.
+            I'm a designer-gone-developer with two years of experience crafting
+            graphics, digital tools, and websites. Currently, I'm creating
+            robust, customer focused designs for&nbsp;
+            <a className="inline-link" href="https://esrgroup.com/">
+              EcoScience Resource Group
+            </a>
+            .
           </p>
           <div className="wrapper">
-            <Link className="portfolio">My Portfolio</Link>
-            <Link className="gitHub">
-              <Icon name="github" />
-              GitHub
-            </Link>
+            <a className="portfolio" href="/#featured">
+              My Portfolio
+            </a>
+            {getExternalLink(state)}
           </div>
         </StyledContent>
       </div>

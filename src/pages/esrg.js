@@ -9,7 +9,11 @@ const esrg = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <ImageGrid title="ESRG" content={data.content} />
+      <ImageGrid
+        title="ESRG"
+        content={data.content}
+        minWidth="clamp(200px, 30vw, 400px)"
+      />
     </Layout>
   );
 };
@@ -28,7 +32,7 @@ export const pageQuery = graphql`
         node {
           id
           childImageSharp {
-            fluid(maxWidth: 1200, quality: 100) {
+            fluid(maxWidth: 400, quality: 100) {
               ...GatsbyImageSharpFluid_withWebp
             }
           }

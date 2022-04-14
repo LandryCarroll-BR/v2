@@ -1,4 +1,4 @@
-import { css } from "styled-components"
+import { css } from "styled-components";
 
 const button = css`
   color: var(--cyan);
@@ -22,7 +22,7 @@ const button = css`
   &:after {
     display: none !important;
   }
-`
+`;
 
 const mixins = {
   flexCenter: css`
@@ -83,11 +83,13 @@ const mixins = {
 
   inlineLink: css`
     transition: var(--transition);
-    color: var(--cyan);
+    color: ${(props) =>
+      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     &:hover,
     &:focus,
     &:active {
-      color: var(--cyan);
+      color: ${(props) =>
+        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
       outline: 0;
       &:after {
         width: 100%;
@@ -99,6 +101,8 @@ const mixins = {
     &:after {
       content: "";
       display: block;
+      background: ${(props) =>
+        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
       width: 0;
       height: 1px;
       position: relative;
@@ -168,12 +172,12 @@ const mixins = {
     &:after {
       display: none !important;
     }
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
-    border-color: ${props =>
+    border-color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     &:hover {
-      background-color: ${props =>
+      background-color: ${(props) =>
         props.colorTheme === "designer"
           ? "var(--purple-tint)"
           : "var(--cyan-tint)"};
@@ -200,12 +204,12 @@ const mixins = {
     &:after {
       display: none !important;
     }
-    color: ${props =>
+    color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
-    border-color: ${props =>
+    border-color: ${(props) =>
       props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
     &:hover {
-      background-color: ${props =>
+      background-color: ${(props) =>
         props.colorTheme === "designer"
           ? "var(--purple-tint)"
           : "var(--cyan-tint)"};
@@ -217,6 +221,6 @@ const mixins = {
     padding: 0;
     margin: 0;
   `,
-}
+};
 
-export default mixins
+export default mixins;

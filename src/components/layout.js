@@ -1,14 +1,15 @@
-import React from "react"
-import { ThemeProvider } from "styled-components"
-import GlobalStyle from "../styles/globalStyles"
-import theme from "../styles/theme"
-import Nav from "./nav"
-import Copyright from "./copyright"
-import Email from "./email"
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import GlobalStyle from "../styles/globalStyles";
+import theme from "../styles/theme";
+import Nav from "./nav";
+import Copyright from "./copyright";
+import Email from "./email";
+import "@fontsource/inter";
 
 const Layout = ({ location, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const isRootPath = location.pathname === rootPath;
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
@@ -25,7 +26,7 @@ const Layout = ({ location, children }) => {
         <footer></footer>
       </ThemeProvider>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

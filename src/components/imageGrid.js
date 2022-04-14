@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { GlobalStateContext } from "../context/GlobalContextProvider";
 
 const StyledImageGrid = styled.section`
+  margin-top: 2em;
   max-width: 1500px;
   h2 {
     ${({ theme }) => theme.mixins.sectionTitle}
@@ -17,18 +18,23 @@ const StyledImageGrid = styled.section`
   .grid {
     ${({ theme }) => theme.mixins.resetList}
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(${(props) => props.minWidth}, 1fr)
+    );
     grid-gap: 10px;
     margin: 0 auto;
   }
 `;
 
-const ImageGrid = ({ title, content }) => {
+const ImageGrid = ({ title, content, minWidth }) => {
   // const images = content.filter((item) => item.node);
   const state = useContext(GlobalStateContext);
   const images = content.edges.map((item) => item.node.childImageSharp);
   return (
-    <StyledImageGrid colorTheme={state ? state.theme : "developer"}>
+    <StyledImageGrid
+      colorTheme={state ? state.theme : "developer"}
+      minWidth={minWidth}>
       <h2>{title}</h2>
 
       <ul className="grid">

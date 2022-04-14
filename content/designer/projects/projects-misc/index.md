@@ -1,13 +1,11 @@
 ---
 type: "designer"
 date: "1"
-title: "Featured Development Project 1"
+title: "Various Illustrations"
 description: "Featured designer project description #1. Here's my project I hope you like it!"
 cover: "./thumbnail.png"
-dribbble: "dribbble.com"
-external: ""
+dribbble: "https://www.dribbble.com"
+external: "/general"
 tech:
-  - React
-  - Redux
-  - Firebase
+  - illustrator
 ---
