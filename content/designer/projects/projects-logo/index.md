@@ -1,8 +1,8 @@
 ---
 type: "designer"
-date: "1"
+date: "2"
 title: "Various Logos"
-description: "Featured designer project description #1. Here's my project I hope you like it!"
+description: "Explore some of the different logos that I've designed."
 cover: "./thumbnail.png"
 dribbble: "dribbble.com"
 external: "/logos/"

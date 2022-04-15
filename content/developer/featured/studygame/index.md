@@ -1,7 +1,7 @@
 ---
 type: "developer"
 date: "3"
-title: "Study Game"
+title: "Study Game Dashboard"
 description: "I've been working on a multi-player vocabulary game that teachers can use in the classroom. This is the first version of the dashboard that I created where users can create, save, and edit different games."
 cover: "./demo.png"
 github: "https://github.com/LandryCarroll-BR/Studygame-Dashboard"

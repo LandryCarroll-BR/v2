@@ -153,16 +153,17 @@ const StyledProjectCard = styled.li`
   }
 
   .project-img {
-    ${({ theme }) => theme.mixins.boxShadow}
     .wrapper {
       border-radius: var(--border-radius);
       overflow: hidden !important;
       opacity: 0.9;
       transition: opacity var(--transition);
+      ${({ theme }) => theme.mixins.boxShadow}
     }
 
     img {
       transition: transform var(--transition);
+      transform: scale(1.01);
     }
 
     .wrapper:hover {
@@ -244,21 +245,21 @@ const Featured = () => {
 
     if (github) {
       links.push(
-        <a href={github}>
+        <a href={github} target="_blank" rel="noopener noreferrer">
           <Icon name="github" />
         </a>
       );
     }
     if (dribbble) {
       links.push(
-        <a href={dribbble}>
+        <a href={dribbble} target="_blank" rel="noopener noreferrer">
           <Icon name="dribbble" />
         </a>
       );
     }
     if (external) {
       links.push(
-        <a href={external}>
+        <a href={external} target="_blank" rel="noopener noreferrer">
           <Icon name="external" />
         </a>
       );
@@ -288,8 +289,18 @@ const Featured = () => {
             </div>
           </div>
           <div className="project-img">
-            <a className="wrapper" href={external}>
-              <GatsbyImage image={image} alt={title} className="img" />
+            <a
+              className="wrapper"
+              href={external}
+              target="_blank"
+              rel="noopener noreferrer">
+              <GatsbyImage
+                image={image}
+                alt={title}
+                objectFit="cover"
+                objectPosition="50% 50%"
+                className="img"
+              />
             </a>
           </div>
         </StyledProjectCard>

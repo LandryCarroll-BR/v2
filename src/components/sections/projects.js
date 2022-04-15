@@ -43,10 +43,12 @@ const StyledProjectsSection = styled.section`
     padding: 1em 1.25em;
     transition: 200ms transform;
 
-    &:hover {
-      transform: translateY(-10px);
-      .wrapper {
-        opacity: 1;
+    @media (min-width: 940px) {
+      &:hover {
+        transform: translateY(-10px);
+        .wrapper {
+          opacity: 1;
+        }
       }
     }
 
@@ -147,21 +149,21 @@ const Projects = () => {
 
     if (github) {
       links.push(
-        <a href={github}>
+        <a href={github} target="_blank" rel="noopener noreferrer">
           <Icon name="github" />
         </a>
       );
     }
     if (dribbble) {
       links.push(
-        <a href={dribbble}>
+        <a href={dribbble} target="_blank" rel="noopener noreferrer">
           <Icon name="dribbble" />
         </a>
       );
     }
     if (external) {
       links.push(
-        <a href={external}>
+        <a href={external} target="_blank" rel="noopener noreferrer">
           <Icon name="external" />
         </a>
       );
@@ -178,7 +180,11 @@ const Projects = () => {
       return (
         <li className="project-card">
           <h4 className="title">{title}</h4>
-          <a href={external} className="wrapper">
+          <a
+            href={external}
+            className="wrapper"
+            target="_blank"
+            rel="noopener noreferrer">
             <GatsbyImage image={image} alt={title} className="img" />
           </a>
           <p className="description">{description}</p>

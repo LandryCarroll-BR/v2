@@ -71,9 +71,8 @@ const Contact = () => {
       id="contact">
       <h2 className="section-title">Contact</h2>
       <p className="description">
-        If you’re looking for a new addition to the team, a fellow human needing
-        help with a new project, or just someone who feels like saying hello,
-        then feel free to send me an email! 👋
+        If you’re looking for a new addition to the team, or you just feel like
+        saying hello, then feel free to send me an email! 👋
       </p>
       <a className="contact-button" href="mailto:hello@landrycarroll.com">
         Say Hello

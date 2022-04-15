@@ -2,7 +2,7 @@
 type: "designer"
 date: "3"
 title: "Marine Life"
-description: "Featured designer project description #2. Here's my project I hope you like it!"
+description: "A branding case study for a non-profit focused on preserving oceanic life."
 cover: "./demo.png"
 github:
 dribbble:

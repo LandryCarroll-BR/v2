@@ -45,6 +45,7 @@ const StyledAboutSection = styled.section`
   }
 
   .tech-container {
+    ${({ theme }) => theme.mixins.boxShadow}
     background-color: var(--blue);
     border-radius: var(--border-radius);
     padding: 1.5em 1.6em;

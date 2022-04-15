@@ -130,7 +130,11 @@ const Nav = () => {
         <a className="contact" href="#contact">
           Contact
         </a>
-        <a className="resume" href="/">
+        <a
+          className="resume"
+          href="/resume_developer.pdf"
+          target="_blank"
+          rel="noopener noreferrer">
           Resume
         </a>
         <Menu />
