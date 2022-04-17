@@ -6,7 +6,7 @@ description: "A branding case study for a non-profit focused on preserving ocean
 cover: "./demo.png"
 github:
 dribbble:
-external:
+external: "/marinelife"
 tech:
   - Illustrator
   - Photoshop

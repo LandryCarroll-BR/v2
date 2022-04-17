@@ -4,13 +4,13 @@ import Layout from "../components/layout";
 import ImageGrid from "../components/imageGrid";
 
 // markup
-const marinelife = ({ data, location }) => {
+const cornerstone = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`;
 
   return (
     <Layout location={location} title={siteTitle}>
       <ImageGrid
-        title="Marine Life"
+        title="Cornerstone"
         content={data.content}
         minWidth="clamp(200px, 100%, 1000px)"
       />
@@ -18,7 +18,7 @@ const marinelife = ({ data, location }) => {
   );
 };
 
-export default marinelife;
+export default cornerstone;
 
 export const pageQuery = graphql`
   query {
@@ -27,13 +27,13 @@ export const pageQuery = graphql`
         title
       }
     }
-    content: allFile(filter: { absolutePath: { regex: "/marinelife/" } }) {
+    content: allFile(filter: { absolutePath: { regex: "/cornerstone/" } }) {
       edges {
         node {
           id
           childImageSharp {
             fluid(maxWidth: 1500, quality: 100) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp
             }
           }
         }

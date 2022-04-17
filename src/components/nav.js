@@ -132,7 +132,7 @@ const Nav = () => {
         </a>
         <a
           className="resume"
-          href="/resume_developer.pdf"
+          href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer">
           Resume
