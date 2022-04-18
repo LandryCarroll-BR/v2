@@ -1,13 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Landry Carroll`,
-    description: `Landry Carroll is a deisnger and front-end developer who builds impactful products and applications.`,
+    description: `Landry Carroll is a designer and front-end developer who builds impactful products and applications.`,
     siteUrl: `https://landrycarroll.com`,
     image: "/og.png",
   },
   plugins: [
     `gatsby-plugin-image`,
-    `gatsby-plugin-netlify`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
