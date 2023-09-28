@@ -1,6 +1,6 @@
-import React from "react"
-import Side from "./side"
-import styled from "styled-components"
+import React from 'react'
+import Side from './side'
+import styled from 'styled-components'
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   z-index: 100;
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     width: 1px;
     height: 90px;
@@ -32,9 +32,9 @@ const StyledWrapper = styled.div`
 
 const Copyright = () => {
   return (
-    <Side orientation={"left"}>
+    <Side orientation={'left'}>
       <StyledWrapper>
-        <span>© 2022 Landry Carroll</span>
+        <span>© 2023 Landry Carroll</span>
       </StyledWrapper>
     </Side>
   )

@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import Side from "./side";
-import { GlobalStateContext } from "../context/GlobalContextProvider";
+import React, { useContext } from 'react'
+import styled from 'styled-components'
+import Side from './side'
+import { GlobalStateContext } from '../context/GlobalContextProvider'
 
 const StyledLinkWrapper = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ const StyledLinkWrapper = styled.div`
   z-index: 100;
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     width: 1px;
     height: 90px;
@@ -33,21 +33,21 @@ const StyledLinkWrapper = styled.div`
     &:focus {
       transform: translateY(-3px);
       color: ${(props) =>
-        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+        props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'};
     }
   }
-`;
+`
 
 const Email = () => {
-  const state = useContext(GlobalStateContext);
+  const state = useContext(GlobalStateContext)
 
   return (
     <Side orientation="right">
-      <StyledLinkWrapper colorTheme={state ? state.theme : "developer"}>
-        <a href={`mailto:hello@landrycarroll.com`}>hello@landrycarroll.com</a>
+      <StyledLinkWrapper colorTheme={state ? state.theme : 'developer'}>
+        <a href={`mailto:carroll.landry@gmail.com`}>carroll.landry@gmail.com</a>
       </StyledLinkWrapper>
     </Side>
-  );
-};
+  )
+}
 
-export default Email;
+export default Email

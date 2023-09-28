@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { StaticImage } from "gatsby-plugin-image";
-import styled from "styled-components";
-import Icon from "../icons/icon";
-import { Link } from "gatsby";
-import { GlobalStateContext } from "../../context/GlobalContextProvider";
+import React, { useContext } from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
+import styled from 'styled-components'
+import Icon from '../icons/icon'
+import { Link } from 'gatsby'
+import { GlobalStateContext } from '../../context/GlobalContextProvider'
 
 const StyledHeroSection = styled.section`
   display: flex;
@@ -29,7 +29,7 @@ const StyledHeroSection = styled.section`
     @media (min-width: 1200px) {
     }
   }
-`;
+`
 const StyledPic = styled.div`
   max-width: 100px;
 
@@ -58,7 +58,7 @@ const StyledPic = styled.div`
   }
 
   .wrapper::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -81,7 +81,7 @@ const StyledPic = styled.div`
     border-radius: 100vh;
     transition: 200ms;
   }
-`;
+`
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
@@ -90,7 +90,7 @@ const StyledContent = styled.div`
   h1 {
     margin: 22px 0 0px 0px;
     color: ${(props) =>
-      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+      props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'};
     font-size: clamp(var(--fz-md), 5vw, var(--fz-xl));
     font-weight: 400;
     text-align: center;
@@ -120,7 +120,7 @@ const StyledContent = styled.div`
 
   .heading-period {
     color: ${(props) =>
-      props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+      props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'};
     transition: var(--transition);
   }
 
@@ -176,7 +176,7 @@ const StyledContent = styled.div`
       margin-right: 8px;
     }
   }
-`;
+`
 
 const getExternalLink = (state) => {
   if (!state) {
@@ -185,45 +185,45 @@ const getExternalLink = (state) => {
         <Icon name="github" />
         GitHub
       </Link>
-    );
+    )
   }
 
-  if (state.theme === "designer") {
+  if (state.theme === 'designer') {
     return (
       <Link className="dribbble" to="https://dribbble.com/Carroll025390">
         <Icon name="dribbble" />
         Dribbble
       </Link>
-    );
+    )
   } else {
     return (
       <Link className="gitHub" to="https://github.com/LandryCarroll-BR">
         <Icon name="github" />
         GitHub
       </Link>
-    );
+    )
   }
-};
+}
 
 const Hero = () => {
-  const state = useContext(GlobalStateContext);
+  const state = useContext(GlobalStateContext)
 
   return (
     <StyledHeroSection>
       <div className="container">
-        <StyledPic colorTheme={state ? state.theme : "developer"}>
+        <StyledPic colorTheme={state ? state.theme : 'developer'}>
           <div className="wrapper">
             <StaticImage
               className="img"
               src="../../images/me.png"
               width={500}
               quality={95}
-              formats={["AUTO", "WEBP", "AVIF"]}
+              formats={['AUTO', 'WEBP', 'AVIF']}
               alt="Headshot"
             />
           </div>
         </StyledPic>
-        <StyledContent colorTheme={state ? state.theme : "developer"}>
+        <StyledContent colorTheme={state ? state.theme : 'developer'}>
           <h1>Hi, my name is</h1>
           <h3 className="big-heading">
             Landry Carroll<span className="heading-period">.</span>
@@ -231,9 +231,9 @@ const Hero = () => {
           <p>
             I'm a designer-gone-developer with two years of experience crafting
             graphics, digital tools, and websites. Currently, I'm creating
-            robust, customer focused designs for&nbsp;
-            <a className="inline-link" href="https://esrgroup.com/">
-              EcoScience Resource Group
+            robust, user focused websites for&nbsp;
+            <a className="inline-link" href="https://boldist.co/">
+              Boldist
             </a>
             .
           </p>
@@ -246,7 +246,7 @@ const Hero = () => {
         </StyledContent>
       </div>
     </StyledHeroSection>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero
