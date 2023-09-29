@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 const StyledFooterSection = styled.section`
   max-width: 1000px;
@@ -12,14 +12,14 @@ const StyledFooterSection = styled.section`
   p {
     font-size: var(--fz-xs);
   }
-`;
+`
 
 const Footer = () => {
   return (
     <StyledFooterSection>
-      <p>Made with ☕ by Landry Carroll ©2022</p>
+      <p>Made with ☕ by Landry Carroll ©2023</p>
     </StyledFooterSection>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
