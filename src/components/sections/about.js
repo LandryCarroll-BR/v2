@@ -97,7 +97,6 @@ const About = () => {
               type
               one
               two
-              three
               tech
             }
           }
