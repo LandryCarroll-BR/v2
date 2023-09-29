@@ -1,14 +1,14 @@
 ---
-type: "developer"
-date: "0"
-title: "Custom Digital Signage"
-description: "A local organization needed customizable digital indoor signage monitors. With an exisiting system that was hard to update, they needed something faster. The link for this project is a demo of the final product."
-cover: "./demo.png"
-github: "https://github.com/LandryCarroll-BR/Information-Screens"
+type: 'developer'
+date: '2'
+title: 'Custom Digital Signage'
+description: 'Web application for displaying event information, complete with titles, dates, and images using Next.js and Supabase.'
+cover: './demo.png'
+github: 'https://github.com/LandryCarroll-BR/info-screens'
 dribbble:
-external: "https://information-screens-demo.web.app/screen1"
+external: 'https://info-screens.vercel.app'
 tech:
-  - React
-  - Redux
-  - Firebase
+  - Next.js
+  - Supabase
+  - Framer Motion
 ---

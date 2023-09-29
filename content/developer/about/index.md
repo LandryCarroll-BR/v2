@@ -1,24 +1,18 @@
 ---
-type: "developer"
-one: "Glad you stopped by! My name is Landry, and I'm passionate about
-  designing and creating websites and web applications. I started coding
-  back in 2020 because I needed some custom CSS for a Squarespace site and
-  something clicked (pun intended). The next thing I know, I'm enrolled in web
-  development courses, and since then, I've never looked back."
+type: 'developer'
+one: "Glad you stopped by! My name is Landry, and my coding journey began unexpectedly in 2020 when I found myself needing custom CSS for a Squarespace site. That moment ignited a passion for web development that has since become my life's focus. Specializing in Next.js applications and WordPress sites, I've honed my skills to create elegant, user-friendly digital experiences."
 
-two: "My first web developer job was in 2021 as an Intern with Entrepreneurs Across Borders, during which I helped build their landing page using Wild Apricot CMS."
+two: "What sets me apart is my unwavering curiosity. I'm not just a developer; I'm a perpetual learner. Whether it's exploring emerging technologies or perfecting the art of brewing coffee (which is my cherished hobby), I'm always eager to embrace new challenges. My ultimate dream is to leverage technology to empower educators and enhance the teaching space. Join me on this exciting journey of innovation and knowledge!"
 
-three: "Today, I'm focused on learning new technologies and improving my
-  programming chops while continuing to work full-time as a graphic designer at Ecoscience Resource Group."
 tech:
-  - JS (ES6+)
+  - Javascript
   - HTML
   - CSS
   - React
-  - Redux
-  - Firebase
-  - Material UI
+  - Nextjs
+  - Wordpress
+  - Tailwind
   - GraphQL
-  - Git
-  - Gatsby
+  - T3 Stack
+  - Framer Motion
 ---

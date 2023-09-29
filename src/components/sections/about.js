@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import { GlobalStateContext } from "../../context/GlobalContextProvider";
+import React, { useEffect, useState, useContext } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
+import { GlobalStateContext } from '../../context/GlobalContextProvider'
 
 const StyledAboutSection = styled.section`
   h2 {
@@ -9,7 +9,7 @@ const StyledAboutSection = styled.section`
 
     &::after {
       background-color: ${(props) =>
-        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+        props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'};
     }
   }
 
@@ -71,20 +71,20 @@ const StyledAboutSection = styled.section`
     }
 
     & li::before {
-      content: "»";
+      content: '»';
       color: ${(props) =>
-        props.colorTheme === "designer" ? "var(--purple)" : "var(--cyan)"};
+        props.colorTheme === 'designer' ? 'var(--purple)' : 'var(--cyan)'};
       position: absolute;
       left: -18px;
       top: -12px;
       opacity: 0.7;
     }
   }
-`;
+`
 
 const About = () => {
-  const state = useContext(GlobalStateContext);
-  const [about, setabout] = useState([]);
+  const state = useContext(GlobalStateContext)
+  const [about, setabout] = useState([])
 
   const data = useStaticQuery(graphql`
     {
@@ -104,41 +104,41 @@ const About = () => {
         }
       }
     }
-  `);
+  `)
 
   const developerAbout = data.about.edges
     .filter(({ node }) => node)
-    .filter((item) => item.node.frontmatter.type === "developer");
+    .filter((item) => item.node.frontmatter.type === 'developer')
 
   const designerAbout = data.about.edges
     .filter(({ node }) => node)
-    .filter((item) => item.node.frontmatter.type === "designer");
+    .filter((item) => item.node.frontmatter.type === 'designer')
 
   useEffect(() => {
-    if (state.theme === "designer") {
-      setabout(designerAbout[0].node.frontmatter);
+    if (state.theme === 'designer') {
+      setabout(designerAbout[0].node.frontmatter)
     } else {
-      setabout(developerAbout[0].node.frontmatter);
+      setabout(developerAbout[0].node.frontmatter)
     }
-  }, [state]);
+  }, [state])
 
   const getTech = () => {
-    const list = about.tech;
+    const list = about.tech
     if (!list) {
-      return;
+      return
     }
     return list.map((item) => {
       return (
         <li>
           <p>{item}</p>
         </li>
-      );
-    });
-  };
+      )
+    })
+  }
 
-  console.log(about.tech);
+  console.log(about.tech)
   return (
-    <StyledAboutSection colorTheme={state ? state.theme : "developer"}>
+    <StyledAboutSection colorTheme={state ? state.theme : 'developer'}>
       <h2>About Me</h2>
       <div className="wrapper">
         <div className="bio-container">
@@ -149,13 +149,13 @@ const About = () => {
 
         <div className="tech-container">
           <span>
-            <p>Technologies I use:</p>
+            <p>Technologies I like to use:</p>
           </span>
           <ul>{getTech()}</ul>
         </div>
       </div>
     </StyledAboutSection>
-  );
-};
+  )
+}
 
-export default About;
+export default About

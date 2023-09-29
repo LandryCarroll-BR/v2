@@ -215,7 +215,7 @@ const Hero = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.png"
+              src="../../images/me.webp"
               width={500}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
@@ -229,13 +229,9 @@ const Hero = () => {
             Landry Carroll<span className="heading-period">.</span>
           </h3>
           <p>
-            I'm a designer-gone-developer with two years of experience crafting
-            graphics, digital tools, and websites. Currently, I'm creating
-            robust, user focused websites for&nbsp;
-            <a className="inline-link" href="https://boldist.co/">
-              Boldist
-            </a>
-            .
+            I'm a web developer with a passion for creating robust, user-focused
+            websites, specializing in Next.js applications and WordPress sites,
+            and fueled by an insatiable thirst for learning and coffee.
           </p>
           <div className="wrapper">
             <a className="portfolio" href="/#featured">
