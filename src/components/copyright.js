@@ -34,7 +34,7 @@ const Copyright = () => {
   return (
     <Side orientation={'left'}>
       <StyledWrapper>
-        <span>© 2023 Landry Carroll</span>
+        <span>© {new Date().getFullYear()} Landry Carroll</span>
       </StyledWrapper>
     </Side>
   )

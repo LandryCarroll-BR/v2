@@ -6,6 +6,7 @@ description: "The Pelicans Baseball Team needed new team poster to display at th
 cover: "./thumbnail.png"
 dribbble:
 external:
+isFeatured: false
 tech:
   - Photoshop
   - Illustrator

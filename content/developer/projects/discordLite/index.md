@@ -5,8 +5,9 @@ title: 'Discord Lite'
 description: 'Discord Lite is a clone of the popular chat application Discord, created with the goal of learning how to utilize Firebase Firestore.'
 cover: './thumbnail.png'
 github: 'https://github.com/LandryCarroll-BR/discord-clone-demo'
-dribbble: '#'
+dribbble: 
 external: 'https://discord-clone-a8efb.firebaseapp.com/'
+isFeatured: false
 tech:
   - React
   - Redux

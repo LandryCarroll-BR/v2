@@ -112,6 +112,7 @@ const Projects = () => {
               dribbble
               external
               tech
+              isFeatured
               cover {
                 childImageSharp {
                   gatsbyImageData(
@@ -129,12 +130,12 @@ const Projects = () => {
   `);
 
   const developerProjects = data.projects.edges
-    .filter(({ node }) => node)
-    .filter((item) => item.node.frontmatter.type === "developer");
+    .filter(item => item.node.frontmatter.title !== "")
+    .filter((item) => item.node.frontmatter.type === "developer" && item.node.frontmatter.isFeatured !== true);
 
   const designerProjects = data.projects.edges
-    .filter(({ node }) => node)
-    .filter((item) => item.node.frontmatter.type === "designer");
+    .filter(item => item.node.frontmatter.title !== "")
+    .filter((item) => item.node.frontmatter.type === "designer" && item.node.frontmatter.isFeatured !== true);
 
   useEffect(() => {
     if (state.theme === "designer") {

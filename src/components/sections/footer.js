@@ -17,7 +17,7 @@ const StyledFooterSection = styled.section`
 const Footer = () => {
   return (
     <StyledFooterSection>
-      <p>Made with ☕ by Landry Carroll ©2023</p>
+      <p>Made with ☕ by Landry Carroll ©{new Date().getFullYear()}</p>
     </StyledFooterSection>
   )
 }

@@ -229,8 +229,7 @@ const Hero = () => {
             Landry Carroll<span className="heading-period">.</span>
           </h3>
           <p>
-            I'm a web developer with a passion for creating robust, user-focused
-            websites, specializing in Next.js applications and WordPress sites,
+            I'm a web developer with a passion for solving problems with modern software, specializing in Typescript applications,
             and fueled by an insatiable thirst for learning and coffee.
           </p>
           <div className="wrapper">

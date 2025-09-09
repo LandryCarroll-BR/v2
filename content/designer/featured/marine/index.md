@@ -7,6 +7,7 @@ cover: "./demo.png"
 github:
 dribbble:
 external: "/marinelife"
+isFeatured: true
 tech:
   - Illustrator
   - Photoshop

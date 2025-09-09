@@ -7,6 +7,7 @@ cover: "./demo.png"
 github:
 dribbble:
 external: "/kidstown"
+isFeatured: true
 tech:
   - Illustrator
 ---

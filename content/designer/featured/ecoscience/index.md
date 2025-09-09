@@ -10,6 +10,7 @@ cover: "./demo.png"
 github:
 dribbble:
 external: "/esrg"
+isFeatured: true
 tech:
   - Illustrator
   - Photoshop

@@ -5,8 +5,9 @@ title: 'Entreprenuers Across Borders'
 description: 'EABI was working on a new landing page and needed a design. This proof of concept is a fully responsive brochure website, designed and built using my own custom CSS properties.'
 cover: './thumbnail.png'
 github: 'https://github.com/LandryCarroll-BR'
-dribbble: '#'
+dribbble: 
 external: 'https://eabi-4fc4e.web.app/'
+isFeatured: false
 tech:
   - React
 ---
