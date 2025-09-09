@@ -230,7 +230,7 @@ const Hero = () => {
           </h3>
           <p>
             I'm a web developer with a passion for solving problems with modern software, specializing in Typescript applications,
-            and fueled by an insatiable thirst for learning and coffee.
+            and fueled by an insatiable thirst for learning and coffee. I Currently build exceptional digital experiences at <a className='inline-link' href='https://www.fairwinds.org' target='_blank'><em>FAIRWINDS</em> Credit Union</a>.
           </p>
           <div className="wrapper">
             <a className="portfolio" href="/#featured">
